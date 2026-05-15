@@ -1,0 +1,35 @@
+{
+  "build_command": "pnpm run build",
+  "capabilities": [],
+  "dev_command": "pnpm run dev",
+  "env_vars": {},
+  "experiments": null,
+  "git_remote": {
+    "repo_url": "s3://vida-prod-gitrepo/webdev-git/310519663629313393/CPBu8bmx6rxABpQ3jW5NoQ",
+    "access_key_id": "ASIAZV3A2ECZB4776WUJ",
+    "secret_access_key": "T5T/NYLw7hsFF7+gYYSmX2dxEsSUUjao1GqAG0gr",
+    "session_token": "IQoJb3JpZ2luX2VjEKj//////////wEaCXVzLWVhc3QtMSJHMEUCIQDe7ri6s9axJAZeJAFsTim47VLFQuRu856NV4Q4drqpCwIgUDpDVjaQJlwb7//xBSiwTN8S7kT/JZz1+lQaJZ4wCyEq9gMIcRAEGgw2NjUzODYwOTg4NjYiDEmLMYxbZUblAS/UryrTA7OJ78pjVcX0uSClrozCL9ST0aF0/tihbUPqtbn6/3u9vRL87SJJJaxYe3wgQrSC27CuiHORbhavV0ohoElnFfcU8wQVx86tsh99AiUibZ9DjexnBIn29bFpf2q3PRnuQ2kAnyQQ89+BwpH2wuXCqcaiJPkUl1wJNP50mD7H3+0S2Xj91KiuQHm3K+qbEyXph4qjpiJzLGq4FtDMFE9GhqwBmLj7IJNmZcXPqUMpSKMvqg5TXhlFz+qmT3ZF7wHp1SDmgV7MQ+eePjzRTrWH6dMCWZQKESP0jgDvBFYhxqo3oIN1iJSCHxhVVkfQtW9/tvMrYs5eA6QLQQzoTS22NdqlTXBbY5xTKCBW/AeimZK9HM5Md5C0aFxeBBtsBR7FajVX9GzaLjFbig59P7pEkpg4aO1USbBm1ziQqEVXM7CL+Os7ynbG9VL/6ywjCEbBUOhA0af9SFZCGH5G9qEEHb2J0ExpoNi/C3smxhvKstyzSTVbCqEbAOmVoUP/156GnOa1qc8ZbkwiEvmFrqRr9KH8T9syLcmWExjXneElJ8kBIRbbb02PWvvmI++nAKnZBh3KAXoyeOJH5/MBS7ySxOI1J0K9hAW3Uy1Duwp56Ua6qAihMPKTm9AGOp0BK3eC1jJ6RuPTjDEbuVq3eWv5+sS3UIyRqZUaKGxCBCKuY3qqxF7WCFA5lyQR76CPiHLDd8fxp9nMzPuV2cnu1C+0u/JkgVhOvvSTfbgJatQo5XnUvFr+MAm5rOPFkUrfMGr6EOE6tNdaoRfectvpXt2qJxzbhewrKYai4t4ah4+4ROojSpW1jWhwVsBQRBlH7HgpIzq7sd7mNzslbg==",
+    "expiration": "2026-05-15T19:23:30.000Z"
+  },
+  "name": "portfolio-3d-modular",
+  "path": "/home/ubuntu/portfolio-3d-modular",
+  "port": 3000,
+  "secrets": {
+    "BUILT_IN_FORGE_API_KEY": "C6TCgHqf3qpfqRvQA7smZC",
+    "BUILT_IN_FORGE_API_URL": "https://forge.manus.ai",
+    "JWT_SECRET": "h2BJT9bicXNWDLHKaTMLHS",
+    "OAUTH_SERVER_URL": "https://api.manus.im",
+    "OWNER_NAME": "Tuấn Anh Phạm",
+    "OWNER_OPEN_ID": "FDB6LYAk6KGHo2r2KC7qrr",
+    "VITE_ANALYTICS_ENDPOINT": "https://manus-analytics.com",
+    "VITE_ANALYTICS_WEBSITE_ID": "3ffc4507-e8ad-4cff-9238-0d861496e133",
+    "VITE_APP_ID": "CPBu8bmx6rxABpQ3jW5NoQ",
+    "VITE_APP_LOGO": "",
+    "VITE_APP_TITLE": "Alex Turner - 3D Designer Portfolio",
+    "VITE_FRONTEND_FORGE_API_KEY": "F9AEtFVWxcN8qianMCKX6C",
+    "VITE_FRONTEND_FORGE_API_URL": "https://forge.manus.ai",
+    "VITE_OAUTH_PORTAL_URL": "https://manus.im"
+  },
+  "template_id": "web-static",
+  "test_command": "pnpm test"
+}
