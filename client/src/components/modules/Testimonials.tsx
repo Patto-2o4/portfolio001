@@ -1,3 +1,6 @@
+import AnimatedSection from "@/components/AnimatedSection";
+import AnimatedItem from "@/components/AnimatedItem";
+
 export default function Testimonials() {
   const testimonials = [
     {
@@ -41,58 +44,61 @@ export default function Testimonials() {
   return (
     <section className="section-padding bg-black border-y border-[#FF006E]/20">
       <div className="container">
-        <h2 className="section-title">What Clients Are Saying</h2>
+        <AnimatedSection direction="up">
+          <h2 className="section-title">What Clients Are Saying</h2>
+        </AnimatedSection>
 
         <div className="grid-2 lg:grid-cols-2">
-          {testimonials.map((testimonial) => (
-            <div
-              key={testimonial.id}
-              className="p-8 rounded-2xl border border-[#FF006E]/20 hover:border-[#FF006E] hover:bg-[#FF006E]/5 transition-all duration-300 group"
-            >
-              <div className="flex gap-1 mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <span key={i} className="text-[#FF006E] text-lg">
-                    *
-                  </span>
-                ))}
-              </div>
-
-              <p className="text-gray-300 text-lg mb-6 leading-relaxed italic">
-                "{testimonial.content}"
-              </p>
-
-              <div className="divider mb-6"></div>
-
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#FF006E] to-[#FF1493] flex items-center justify-center text-2xl">
-                  {testimonial.avatar}
+          {testimonials.map((testimonial, index) => (
+            <AnimatedItem key={testimonial.id} index={index}>
+              <div className="p-8 rounded-2xl border border-[#FF006E]/20 hover:border-[#FF006E] hover:bg-[#FF006E]/5 transition-all duration-300 group">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <span key={i} className="text-[#FF006E] text-lg">
+                      *
+                    </span>
+                  ))}
                 </div>
 
-                <div>
-                  <h4 className="font-bold text-white group-hover:text-[#FF006E] transition-colors">
-                    {testimonial.name}
-                  </h4>
-                  <p className="text-sm text-gray-500">{testimonial.position}</p>
+                <p className="text-gray-300 text-lg mb-6 leading-relaxed italic">
+                  "{testimonial.content}"
+                </p>
+
+                <div className="divider mb-6"></div>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#FF006E] to-[#FF1493] flex items-center justify-center text-2xl">
+                    {testimonial.avatar}
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-white group-hover:text-[#FF006E] transition-colors">
+                      {testimonial.name}
+                    </h4>
+                    <p className="text-sm text-gray-500">{testimonial.position}</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </AnimatedItem>
           ))}
         </div>
 
-        <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="text-center p-8 rounded-2xl border border-[#FF006E]/20 hover:border-[#FF006E] transition-colors">
-            <div className="text-5xl font-bold text-[#FF006E] mb-2">4.9/5</div>
-            <p className="text-gray-400">Average Rating</p>
+        <AnimatedSection delay={0.4} direction="up">
+          <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center p-8 rounded-2xl border border-[#FF006E]/20 hover:border-[#FF006E] transition-colors">
+              <div className="text-5xl font-bold text-[#FF006E] mb-2">4.9/5</div>
+              <p className="text-gray-400">Average Rating</p>
+            </div>
+            <div className="text-center p-8 rounded-2xl border border-[#FF006E]/20 hover:border-[#FF006E] transition-colors">
+              <div className="text-5xl font-bold text-[#FF006E] mb-2">30+</div>
+              <p className="text-gray-400">Happy Clients</p>
+            </div>
+            <div className="text-center p-8 rounded-2xl border border-[#FF006E]/20 hover:border-[#FF006E] transition-colors">
+              <div className="text-5xl font-bold text-[#FF006E] mb-2">100%</div>
+              <p className="text-gray-400">Satisfaction Rate</p>
+            </div>
           </div>
-          <div className="text-center p-8 rounded-2xl border border-[#FF006E]/20 hover:border-[#FF006E] transition-colors">
-            <div className="text-5xl font-bold text-[#FF006E] mb-2">30+</div>
-            <p className="text-gray-400">Happy Clients</p>
-          </div>
-          <div className="text-center p-8 rounded-2xl border border-[#FF006E]/20 hover:border-[#FF006E] transition-colors">
-            <div className="text-5xl font-bold text-[#FF006E] mb-2">100%</div>
-            <p className="text-gray-400">Satisfaction Rate</p>
-          </div>
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   );

@@ -1,3 +1,5 @@
+import AnimatedSection from "@/components/AnimatedSection";
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -9,116 +11,120 @@ export default function Footer() {
       </div>
 
       <div className="container relative z-10 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          <div className="md:col-span-2">
-            <div className="text-3xl font-bold text-white mb-4">
-              ALEX<span className="text-[#FF006E]">.</span>
+        <AnimatedSection direction="up">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div className="md:col-span-2">
+              <div className="text-3xl font-bold text-white mb-4">
+                ALEX<span className="text-[#FF006E]">.</span>
+              </div>
+
+              <p className="text-gray-400 mb-6 leading-relaxed">
+                3D Designer & Creative Technologist crafting immersive digital experiences.
+                Transforming ideas into stunning visual realities.
+              </p>
+
+              <div className="flex gap-4">
+                <a
+                  href="#"
+                  className="w-10 h-10 rounded-full border border-[#FF006E] flex items-center justify-center text-[#FF006E] hover:bg-[#FF006E] hover:text-white transition-all duration-300 text-sm font-semibold"
+                >
+                  IG
+                </a>
+                <a
+                  href="#"
+                  className="w-10 h-10 rounded-full border border-[#FF006E] flex items-center justify-center text-[#FF006E] hover:bg-[#FF006E] hover:text-white transition-all duration-300 text-sm font-semibold"
+                >
+                  BE
+                </a>
+                <a
+                  href="#"
+                  className="w-10 h-10 rounded-full border border-[#FF006E] flex items-center justify-center text-[#FF006E] hover:bg-[#FF006E] hover:text-white transition-all duration-300 text-sm font-semibold"
+                >
+                  LI
+                </a>
+                <a
+                  href="#"
+                  className="w-10 h-10 rounded-full border border-[#FF006E] flex items-center justify-center text-[#FF006E] hover:bg-[#FF006E] hover:text-white transition-all duration-300 text-sm font-semibold"
+                >
+                  TW
+                </a>
+              </div>
             </div>
 
-            <p className="text-gray-400 mb-6 leading-relaxed">
-              3D Designer & Creative Technologist crafting immersive digital experiences.
-              Transforming ideas into stunning visual realities.
-            </p>
+            <div>
+              <h4 className="text-white font-bold mb-6">Quick Links</h4>
+              <ul className="space-y-3">
+                <li>
+                  <a href="#about" className="text-gray-400 hover:text-[#FF006E] transition-colors">
+                    About
+                  </a>
+                </li>
+                <li>
+                  <a href="#gallery" className="text-gray-400 hover:text-[#FF006E] transition-colors">
+                    Gallery
+                  </a>
+                </li>
+                <li>
+                  <a href="#projects" className="text-gray-400 hover:text-[#FF006E] transition-colors">
+                    Projects
+                  </a>
+                </li>
+                <li>
+                  <a href="#contact" className="text-gray-400 hover:text-[#FF006E] transition-colors">
+                    Contact
+                  </a>
+                </li>
+              </ul>
+            </div>
 
-            <div className="flex gap-4">
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full border border-[#FF006E] flex items-center justify-center text-[#FF006E] hover:bg-[#FF006E] hover:text-white transition-all duration-300 text-sm font-semibold"
-              >
-                IG
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full border border-[#FF006E] flex items-center justify-center text-[#FF006E] hover:bg-[#FF006E] hover:text-white transition-all duration-300 text-sm font-semibold"
-              >
-                BE
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full border border-[#FF006E] flex items-center justify-center text-[#FF006E] hover:bg-[#FF006E] hover:text-white transition-all duration-300 text-sm font-semibold"
-              >
-                LI
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full border border-[#FF006E] flex items-center justify-center text-[#FF006E] hover:bg-[#FF006E] hover:text-white transition-all duration-300 text-sm font-semibold"
-              >
-                TW
-              </a>
+            <div>
+              <h4 className="text-white font-bold mb-6">Contact</h4>
+              <ul className="space-y-3">
+                <li>
+                  <a
+                    href="mailto:alex@example.com"
+                    className="text-gray-400 hover:text-[#FF006E] transition-colors"
+                  >
+                    alex@example.com
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="tel:+1234567890"
+                    className="text-gray-400 hover:text-[#FF006E] transition-colors"
+                  >
+                    +1 (234) 567-890
+                  </a>
+                </li>
+                <li className="text-gray-400">
+                  San Francisco, CA
+                </li>
+              </ul>
             </div>
           </div>
-
-          <div>
-            <h4 className="text-white font-bold mb-6">Quick Links</h4>
-            <ul className="space-y-3">
-              <li>
-                <a href="#about" className="text-gray-400 hover:text-[#FF006E] transition-colors">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#gallery" className="text-gray-400 hover:text-[#FF006E] transition-colors">
-                  Gallery
-                </a>
-              </li>
-              <li>
-                <a href="#projects" className="text-gray-400 hover:text-[#FF006E] transition-colors">
-                  Projects
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="text-gray-400 hover:text-[#FF006E] transition-colors">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-white font-bold mb-6">Contact</h4>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href="mailto:alex@example.com"
-                  className="text-gray-400 hover:text-[#FF006E] transition-colors"
-                >
-                  alex@example.com
-                </a>
-              </li>
-              <li>
-                <a
-                  href="tel:+1234567890"
-                  className="text-gray-400 hover:text-[#FF006E] transition-colors"
-                >
-                  +1 (234) 567-890
-                </a>
-              </li>
-              <li className="text-gray-400">
-                San Francisco, CA
-              </li>
-            </ul>
-          </div>
-        </div>
+        </AnimatedSection>
 
         <div className="divider my-12"></div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-gray-500 text-sm">
-            Copyright {currentYear} Alex Turner. All rights reserved.
-          </p>
+        <AnimatedSection direction="up" delay={0.2}>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <p className="text-gray-500 text-sm">
+              Copyright {currentYear} Alex Turner. All rights reserved.
+            </p>
 
-          <div className="flex gap-6 text-sm">
-            <a href="#" className="text-gray-500 hover:text-[#FF006E] transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-gray-500 hover:text-[#FF006E] transition-colors">
-              Terms of Service
-            </a>
-            <a href="#" className="text-gray-500 hover:text-[#FF006E] transition-colors">
-              Sitemap
-            </a>
+            <div className="flex gap-6 text-sm">
+              <a href="#" className="text-gray-500 hover:text-[#FF006E] transition-colors">
+                Privacy Policy
+              </a>
+              <a href="#" className="text-gray-500 hover:text-[#FF006E] transition-colors">
+                Terms of Service
+              </a>
+              <a href="#" className="text-gray-500 hover:text-[#FF006E] transition-colors">
+                Sitemap
+              </a>
+            </div>
           </div>
-        </div>
+        </AnimatedSection>
       </div>
 
       <a

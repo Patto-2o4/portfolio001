@@ -1,3 +1,6 @@
+import AnimatedSection from "@/components/AnimatedSection";
+import AnimatedItem from "@/components/AnimatedItem";
+
 export default function Gallery() {
   const projects = [
     {
@@ -47,69 +50,74 @@ export default function Gallery() {
   return (
     <section id="gallery" className="section-padding bg-black">
       <div className="container">
-        <h2 className="section-title">Featured Works</h2>
+        <AnimatedSection direction="up">
+          <h2 className="section-title">Featured Works</h2>
+        </AnimatedSection>
 
-        <div className="flex justify-center gap-4 mb-16 flex-wrap">
-          <button className="px-6 py-2 rounded-full border border-[#FF006E] text-[#FF006E] font-semibold hover:bg-[#FF006E] hover:text-white transition-all duration-300">
-            All
-          </button>
-          <button className="px-6 py-2 rounded-full border border-gray-600 text-gray-400 font-semibold hover:border-[#FF006E] hover:text-[#FF006E] transition-all duration-300">
-            3D Modeling
-          </button>
-          <button className="px-6 py-2 rounded-full border border-gray-600 text-gray-400 font-semibold hover:border-[#FF006E] hover:text-[#FF006E] transition-all duration-300">
-            Animation
-          </button>
-          <button className="px-6 py-2 rounded-full border border-gray-600 text-gray-400 font-semibold hover:border-[#FF006E] hover:text-[#FF006E] transition-all duration-300">
-            Design
-          </button>
-        </div>
+        <AnimatedSection delay={0.2} direction="up">
+          <div className="flex justify-center gap-4 mb-16 flex-wrap">
+            <button className="px-6 py-2 rounded-full border border-[#FF006E] text-[#FF006E] font-semibold hover:bg-[#FF006E] hover:text-white transition-all duration-300">
+              All
+            </button>
+            <button className="px-6 py-2 rounded-full border border-gray-600 text-gray-400 font-semibold hover:border-[#FF006E] hover:text-[#FF006E] transition-all duration-300">
+              3D Modeling
+            </button>
+            <button className="px-6 py-2 rounded-full border border-gray-600 text-gray-400 font-semibold hover:border-[#FF006E] hover:text-[#FF006E] transition-all duration-300">
+              Animation
+            </button>
+            <button className="px-6 py-2 rounded-full border border-gray-600 text-gray-400 font-semibold hover:border-[#FF006E] hover:text-[#FF006E] transition-all duration-300">
+              Design
+            </button>
+          </div>
+        </AnimatedSection>
 
         <div className="grid-3">
-          {projects.map((project) => (
-            <div
-              key={project.id}
-              className="project-card group cursor-pointer"
-            >
-              <div className="relative h-64 bg-gradient-to-br from-[#1A1A1A] to-[#0A0A0A] flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#FF006E]/0 via-[#FF006E]/20 to-[#FF006E]/0"></div>
+          {projects.map((project, index) => (
+            <AnimatedItem key={project.id} index={index}>
+              <div className="project-card group cursor-pointer">
+                <div className="relative h-64 bg-gradient-to-br from-[#1A1A1A] to-[#0A0A0A] flex items-center justify-center overflow-hidden">
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#FF006E]/0 via-[#FF006E]/20 to-[#FF006E]/0"></div>
+                  </div>
+
+                  <div className="text-7xl group-hover:scale-110 transition-transform duration-300 z-10">
+                    {project.image}
+                  </div>
                 </div>
 
-                <div className="text-7xl group-hover:scale-110 transition-transform duration-300 z-10">
-                  {project.image}
+                <div className="p-6">
+                  <p className="text-xs font-semibold text-[#FF006E] uppercase tracking-wider mb-2">
+                    {project.category}
+                  </p>
+
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#FF006E] transition-colors">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-gray-400 text-sm mb-4">
+                    {project.description}
+                  </p>
+
+                  <a
+                    href="#"
+                    className="inline-flex items-center gap-2 text-[#FF006E] font-semibold hover:gap-3 transition-all duration-300"
+                  >
+                    View Project
+                    <span>-&gt;</span>
+                  </a>
                 </div>
               </div>
-
-              <div className="p-6">
-                <p className="text-xs font-semibold text-[#FF006E] uppercase tracking-wider mb-2">
-                  {project.category}
-                </p>
-
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#FF006E] transition-colors">
-                  {project.title}
-                </h3>
-
-                <p className="text-gray-400 text-sm mb-4">
-                  {project.description}
-                </p>
-
-                <a
-                  href="#"
-                  className="inline-flex items-center gap-2 text-[#FF006E] font-semibold hover:gap-3 transition-all duration-300"
-                >
-                  View Project
-                  <span>-&gt;</span>
-                </a>
-              </div>
-            </div>
+            </AnimatedItem>
           ))}
         </div>
 
-        <div className="flex justify-center mt-16">
-          <button className="btn-primary">
-            View All Projects
-          </button>
-        </div>
+        <AnimatedSection delay={0.4} direction="up">
+          <div className="flex justify-center mt-16">
+            <button className="btn-primary">
+              View All Projects
+            </button>
+          </div>
+        </AnimatedSection>
       </div>
     </section>
   );
