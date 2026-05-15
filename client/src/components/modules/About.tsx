@@ -31,11 +31,11 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <AnimatedSection direction="left">
             <div className="relative h-96 lg:h-[500px]">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#FF006E]/20 to-transparent rounded-3xl blur-3xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-[#6366F1]/20 to-transparent rounded-3xl blur-3xl"></div>
 
-              <div className="relative w-full h-full bg-gradient-to-br from-[#1A1A1A] to-[#0A0A0A] rounded-3xl border border-[#FF006E]/20 flex items-center justify-center overflow-hidden group">
+              <div className="relative w-full h-full bg-gradient-to-br from-[#1A1A1A] to-[#0A0A0A] rounded-3xl border border-[#6366F1]/20 flex items-center justify-center overflow-hidden group">
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#FF006E]/0 via-[#FF006E]/10 to-[#FF006E]/0 animate-pulse"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#6366F1]/0 via-[#6366F1]/10 to-[#6366F1]/0 animate-pulse"></div>
                 </div>
 
                 <div className="text-center z-10">
@@ -79,7 +79,7 @@ export default function About() {
                   ].map((skill, index) => (
                     <div
                       key={index}
-                      className="px-4 py-3 rounded-lg border border-[#FF006E]/30 hover:border-[#FF006E] hover:bg-[#FF006E]/10 transition-all duration-300 text-gray-300 hover:text-[#FF006E]"
+                      className="px-4 py-3 rounded-lg border border-[#6366F1]/30 hover:border-[#6366F1] hover:bg-[#6366F1]/10 transition-all duration-300 text-gray-300 hover:text-[#6366F1]"
                     >
                       + {skill}
                     </div>

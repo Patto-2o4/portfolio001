@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import AnimatedSection from "@/components/AnimatedSection";
-import SplineViewer from "@/components/SplineViewer";
+import SplineInteractive from "@/components/SplineInteractive";
 
 /**
  * MODULE: Hero Section
@@ -17,9 +18,11 @@ import SplineViewer from "@/components/SplineViewer";
  */
 
 // URL mô hình 3D từ Spline - Thay đổi URL này bằng mô hình của bạn
-const SPLINE_URL = "https://prod.spline.design/NkGfqNqHWVIzxWxr/scene";
+const SPLINE_URL = "https://prod.spline.design/wgI90cJyjVIqgKwS/scene";
 
 export default function Hero() {
+  const [splineTrigger, setSplineTrigger] = useState<string>("");
+
   // Animation variants cho text
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -64,16 +67,16 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <a href="#about" className="text-gray-300 hover:text-[#FF006E] transition-colors">
+            <a href="#about" className="text-gray-300 hover:text-[#6366F1] transition-colors">
               About
             </a>
-            <a href="#clients" className="text-gray-300 hover:text-[#FF006E] transition-colors">
+            <a href="#clients" className="text-gray-300 hover:text-[#6366F1] transition-colors">
               Customers
             </a>
-            <a href="#projects" className="text-gray-300 hover:text-[#FF006E] transition-colors">
+            <a href="#projects" className="text-gray-300 hover:text-[#6366F1] transition-colors">
               Projects
             </a>
-            <a href="#contact" className="text-gray-300 hover:text-[#FF006E] transition-colors">
+            <a href="#contact" className="text-gray-300 hover:text-[#6366F1] transition-colors">
               Contact
             </a>
           </motion.div>
@@ -169,10 +172,14 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           {/* Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#FF006E]/20 to-transparent rounded-full blur-3xl"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#6366F1]/20 to-[#8B5CF6]/10 rounded-full blur-3xl"></div>
 
-          {/* Spline 3D Model */}
-          <SplineViewer url={SPLINE_URL} title="3D Designer Portfolio" />
+          {/* Spline 3D Model - Click/Hover to interact */}
+          <SplineInteractive 
+            url={SPLINE_URL} 
+            title="Interactive 3D Model"
+            onTrigger={(trigger) => setSplineTrigger(trigger)}
+          />
         </motion.div>
       </div>
 
@@ -183,7 +190,7 @@ export default function Hero() {
         transition={{ duration: 2, repeat: Infinity }}
       >
         <p className="text-gray-500 text-sm">Scroll to explore</p>
-        <svg className="w-5 h-5 text-[#FF006E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-[#6366F1]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
       </motion.div>
