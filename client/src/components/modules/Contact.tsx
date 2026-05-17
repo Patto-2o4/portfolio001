@@ -1,7 +1,29 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import emailjs from "@emailjs/browser";
 import AnimatedSection from "@/components/AnimatedSection";
+
+/**
+ * MODULE: Contact Section
+ * =======================
+ * Muc dich: Form lien he voi EmailJS integration
+ * 
+ * Cau hinh EmailJS:
+ * 1. Vao https://www.emailjs.com
+ * 2. Dang ky tai khoan
+ * 3. Lay Service ID, Template ID, Public Key
+ * 4. Thay doi cac gia tri duoi day
+ */
+
+// EMAILJS CONFIG - Thay doi cac gia tri nay
+const EMAILJS_SERVICE_ID = "service_your_service_id"; // Lay tu EmailJS dashboard
+const EMAILJS_TEMPLATE_ID = "template_your_template_id"; // Lay tu EmailJS dashboard
+const EMAILJS_PUBLIC_KEY = "your_public_key"; // Lay tu EmailJS dashboard
+const RECIPIENT_EMAIL = "Patto2k4@gmail.com"; // Email nhan tin nhan
+
+// Khoi tao EmailJS
+emailjs.init(EMAILJS_PUBLIC_KEY);
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -24,22 +46,39 @@ export default function Contact() {
     setIsSubmitting(true);
 
     if (!formData.name || !formData.email || !formData.message) {
-      toast.error("Please fill in all fields");
+      toast.error("Vui long dien day du tat ca cac truong");
       setIsSubmitting(false);
       return;
     }
 
-    setTimeout(() => {
-      toast.success("Message sent successfully! I'll get back to you soon.");
+    try {
+      // Gui email qua EmailJS
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_email: RECIPIENT_EMAIL,
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+
+      toast.success("Tin nhan da duoc gui thanh cong! Toi se phan hoi trong 24 gio.");
       setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      toast.error("Co loi khi gui tin nhan. Vui long thu lai.");
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   return (
     <section id="contact" className="section-padding bg-black relative overflow-hidden">
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#FF006E] rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#6366F1] rounded-full blur-3xl"></div>
       </div>
 
       <div className="container relative z-10">
@@ -50,7 +89,7 @@ export default function Contact() {
             <span className="gradient-text">TOUCH</span>
           </h2>
           <p className="text-center text-gray-400 text-lg mb-16 max-w-2xl mx-auto">
-            Have a project in mind? Let's collaborate and create something amazing together.
+            Co du an trong dau? Hay cung toi tao ra dieu gi tuyet voi.
           </p>
         </AnimatedSection>
 
@@ -60,10 +99,10 @@ export default function Contact() {
               <div className="mb-12">
                 <p className="text-gray-500 text-sm uppercase tracking-widest mb-2">Email</p>
                 <a
-                  href="mailto:alex@example.com"
-                  className="text-3xl font-bold text-white hover:text-[#FF006E] transition-colors"
+                  href="mailto:Patto2k4@gmail.com"
+                  className="text-3xl font-bold text-white hover:text-[#6366F1] transition-colors"
                 >
-                  alex@example.com
+                  Patto2k4@gmail.com
                 </a>
               </div>
 
@@ -71,7 +110,7 @@ export default function Contact() {
                 <p className="text-gray-500 text-sm uppercase tracking-widest mb-2">Phone</p>
                 <a
                   href="tel:+1234567890"
-                  className="text-3xl font-bold text-white hover:text-[#FF006E] transition-colors"
+                  className="text-3xl font-bold text-white hover:text-[#6366F1] transition-colors"
                 >
                   +1 (234) 567-890
                 </a>
@@ -87,19 +126,19 @@ export default function Contact() {
                 <div className="flex gap-6">
                   <a
                     href="#"
-                    className="w-12 h-12 rounded-full border border-[#FF006E] flex items-center justify-center text-[#FF006E] hover:bg-[#FF006E] hover:text-white transition-all duration-300 text-lg"
+                    className="w-12 h-12 rounded-full border border-[#6366F1] flex items-center justify-center text-[#6366F1] hover:bg-[#6366F1] hover:text-white transition-all duration-300 text-lg"
                   >
                     f
                   </a>
                   <a
                     href="#"
-                    className="w-12 h-12 rounded-full border border-[#FF006E] flex items-center justify-center text-[#FF006E] hover:bg-[#FF006E] hover:text-white transition-all duration-300 text-lg"
+                    className="w-12 h-12 rounded-full border border-[#6366F1] flex items-center justify-center text-[#6366F1] hover:bg-[#6366F1] hover:text-white transition-all duration-300 text-lg"
                   >
                     t
                   </a>
                   <a
                     href="#"
-                    className="w-12 h-12 rounded-full border border-[#FF006E] flex items-center justify-center text-[#FF006E] hover:bg-[#FF006E] hover:text-white transition-all duration-300 text-lg"
+                    className="w-12 h-12 rounded-full border border-[#6366F1] flex items-center justify-center text-[#6366F1] hover:bg-[#6366F1] hover:text-white transition-all duration-300 text-lg"
                   >
                     in
                   </a>
@@ -111,7 +150,7 @@ export default function Contact() {
           </AnimatedSection>
 
           <AnimatedSection direction="right">
-            <div className="p-8 rounded-2xl border border-[#FF006E]/20 bg-[#FF006E]/5">
+            <div className="p-8 rounded-2xl border border-[#6366F1]/20 bg-[#6366F1]/5">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-semibold text-white mb-2">
@@ -124,7 +163,7 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="John Doe"
-                    className="w-full px-4 py-3 rounded-lg bg-[#1A1A1A] border border-[#FF006E]/20 text-white placeholder-gray-600 focus:border-[#FF006E] focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-lg bg-[#1A1A1A] border border-[#6366F1]/20 text-white placeholder-gray-600 focus:border-[#6366F1] focus:outline-none transition-colors"
                   />
                 </div>
 
@@ -139,7 +178,7 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="john@example.com"
-                    className="w-full px-4 py-3 rounded-lg bg-[#1A1A1A] border border-[#FF006E]/20 text-white placeholder-gray-600 focus:border-[#FF006E] focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-lg bg-[#1A1A1A] border border-[#6366F1]/20 text-white placeholder-gray-600 focus:border-[#6366F1] focus:outline-none transition-colors"
                   />
                 </div>
 
@@ -154,7 +193,7 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="Tell me about your project..."
                     rows={5}
-                    className="w-full px-4 py-3 rounded-lg bg-[#1A1A1A] border border-[#FF006E]/20 text-white placeholder-gray-600 focus:border-[#FF006E] focus:outline-none transition-colors resize-none"
+                    className="w-full px-4 py-3 rounded-lg bg-[#1A1A1A] border border-[#6366F1]/20 text-white placeholder-gray-600 focus:border-[#6366F1] focus:outline-none transition-colors resize-none"
                   ></textarea>
                 </div>
 
@@ -168,7 +207,7 @@ export default function Contact() {
               </form>
 
               <p className="text-xs text-gray-500 text-center mt-4">
-                I'll get back to you within 24 hours
+                Toi se phan hoi trong 24 gio
               </p>
             </div>
           </AnimatedSection>

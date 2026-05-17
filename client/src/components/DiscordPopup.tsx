@@ -20,22 +20,14 @@ const DISCORD_URL = "https://discord.gg/"; // Thay bang URL Discord cua ban
 
 export default function DiscordPopup() {
   const [isOpen, setIsOpen] = useState(false);
-  const [hasShown, setHasShown] = useState(false);
 
   useEffect(() => {
-    // Kiem tra xem popup da duoc hien thi trong session nay chua
-    const hasShownPopup = sessionStorage.getItem("discordPopupShown");
+    // Hien thi popup 1.5 giay sau khi trang tai
+    const timer = setTimeout(() => {
+      setIsOpen(true);
+    }, 1500);
 
-    if (!hasShownPopup) {
-      // Delay 1 giay truoc khi hien thi popup
-      const timer = setTimeout(() => {
-        setIsOpen(true);
-        setHasShown(true);
-        sessionStorage.setItem("discordPopupShown", "true");
-      }, 1000);
-
-      return () => clearTimeout(timer);
-    }
+    return () => clearTimeout(timer);
   }, []);
 
   const handleClose = () => {
@@ -128,7 +120,7 @@ export default function DiscordPopup() {
               </div>
 
               <p className="text-xs text-gray-500 text-center mt-4">
-                You can always join later from the footer
+                Popup nay se hien thi moi lan ban reload trang
               </p>
             </div>
           </motion.div>

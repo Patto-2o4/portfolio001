@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import AnimatedSection from "@/components/AnimatedSection";
 import SplineInteractive from "@/components/SplineInteractive";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 /**
  * MODULE: Hero Section
@@ -58,11 +59,11 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            ALEX<span className="text-[#FF006E]">.</span>
+            ALEX<span className="text-[#6366F1]">.</span>
           </motion.div>
 
           <motion.div
-            className="hidden md:flex gap-8"
+            className="hidden md:flex gap-8 items-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -79,6 +80,8 @@ export default function Hero() {
             <a href="#contact" className="text-gray-300 hover:text-[#6366F1] transition-colors">
               Contact
             </a>
+            <div className="w-px h-6 bg-[#6366F1]/20"></div>
+            <LanguageSwitcher />
           </motion.div>
 
           <motion.div
