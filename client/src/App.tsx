@@ -33,6 +33,7 @@ function Router() {
 import Header from "./components/modules/Header";
 import Footer from "./components/modules/Footer";
 import { LanguageProvider } from "./contexts/LanguageContext";
+import LoadingScreen from "./components/LoadingScreen";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           // switchable
         >
           <TooltipProvider>
+            <LoadingScreen />
             <Toaster />
             <CustomCursor />
             <DiscordPopup />
