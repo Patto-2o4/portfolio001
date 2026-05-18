@@ -5,13 +5,16 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
+import ProjectDetail from "./pages/ProjectDetail";
 import DiscordPopup from "./components/DiscordPopup";
+import CustomCursor from "./components/CustomCursor";
 
 
 function Router() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
+      <Route path={"/projects/:id"} component={ProjectDetail} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
@@ -33,6 +36,7 @@ function App() {
       >
         <TooltipProvider>
           <Toaster />
+          <CustomCursor />
           <DiscordPopup />
           <Router />
         </TooltipProvider>

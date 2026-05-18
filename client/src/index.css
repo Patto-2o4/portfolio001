@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -184,23 +184,23 @@
   }
   body {
     @apply bg-background text-foreground;
-    /* Font chính: Space Grotesk cho hiện đại, Poppins cho fallback */
-    font-family: 'Space Grotesk', 'Poppins', sans-serif;
+    /* Font chính: Space Grotesk cho hiện đại, Plus Jakarta Sans, Be Vietnam Pro và Noto Sans SC cho đa ngôn ngữ */
+    font-family: 'Space Grotesk', 'Plus Jakarta Sans', 'Be Vietnam Pro', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'Source Han Sans SC', sans-serif;
   }
   /* Tiêu đề lớn - H1 */
   h1 {
     @apply text-5xl md:text-6xl font-black tracking-tight;
-    font-family: 'Outfit', 'Space Grotesk', sans-serif;
+    font-family: 'Outfit', 'Plus Jakarta Sans', 'Be Vietnam Pro', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   }
   /* Tiêu đề vừa - H2 */
   h2 {
     @apply text-4xl md:text-5xl font-black tracking-tight;
-    font-family: 'Outfit', 'Space Grotesk', sans-serif;
+    font-family: 'Outfit', 'Plus Jakarta Sans', 'Be Vietnam Pro', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   }
   /* Tiêu đề nhỏ - H3 */
   h3 {
     @apply text-2xl md:text-3xl font-extrabold tracking-tight;
-    font-family: 'Outfit', 'Space Grotesk', sans-serif;
+    font-family: 'Outfit', 'Plus Jakarta Sans', 'Be Vietnam Pro', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
@@ -301,7 +301,7 @@
   /* Section title - Tiêu đề section */
   .section-title {
     @apply text-4xl md:text-5xl font-black text-white mb-12 text-center tracking-tight;
-    font-family: 'Outfit', 'Space Grotesk', sans-serif;
+    font-family: 'Outfit', 'Plus Jakarta Sans', 'Be Vietnam Pro', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   }
 
   /* Grid layout - Lưới 3 cột */
@@ -322,5 +322,66 @@
   /* Divider - Đường phân chia */
   .divider {
     @apply h-px bg-gradient-to-r from-transparent via-[#6366F1] to-transparent;
+  }
+}
+
+/* =============================================================================
+   GOOGLE TRANSLATE STYLING OVERRIDES
+   =============================================================================
+   Ẩn hoàn toàn thanh công cụ của Google Translate ở trên cùng trang web
+   và các tooltip hiển thị "văn bản gốc" khi rê chuột qua.
+*/
+
+/* Ẩn thanh công cụ Translate trên cùng */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame,
+.goog-te-banner,
+iframe.goog-te-banner-frame {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+}
+
+/* Trả lại khoảng trống phía trên body do Google Translate tự động thêm padding */
+body {
+  top: 0 !important;
+  position: static !important;
+}
+
+/* Ẩn bong bóng/tooltip hiển thị văn bản gốc khi hover */
+#goog-gt-tt,
+.goog-te-balloon-frame,
+#goog-gt-tt.skiptranslate,
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Loại bỏ hiệu ứng highlight nền khi hover vào văn bản dịch */
+.goog-text-highlight {
+  background-color: transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+}
+
+/* =============================================================================
+   CUSTOM STICKY CURSOR STYLING OVERRIDES
+   =============================================================================
+   Ẩn con trỏ mặc định trên các thiết bị hỗ trợ trỏ chuột để nhường chỗ
+   cho con trỏ 3D thiết kế riêng rực rỡ, mượt mà.
+*/
+@media (pointer: fine) {
+  body, 
+  a, 
+  button, 
+  input, 
+  textarea, 
+  select,
+  [role="button"],
+  .cursor-pointer {
+    cursor: none !important;
   }
 }
