@@ -32,23 +32,26 @@ function Router() {
 
 import Header from "./components/modules/Header";
 import Footer from "./components/modules/Footer";
+import { LanguageProvider } from "./contexts/LanguageContext";
 
 function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider
-        defaultTheme="dark"
-        // switchable
-      >
-        <TooltipProvider>
-          <Toaster />
-          <CustomCursor />
-          <DiscordPopup />
-          <Header />
-          <Router />
-          <Footer />
-        </TooltipProvider>
-      </ThemeProvider>
+      <LanguageProvider>
+        <ThemeProvider
+          defaultTheme="dark"
+          // switchable
+        >
+          <TooltipProvider>
+            <Toaster />
+            <CustomCursor />
+            <DiscordPopup />
+            <Header />
+            <Router />
+            <Footer />
+          </TooltipProvider>
+        </ThemeProvider>
+      </LanguageProvider>
     </ErrorBoundary>
   );
 }

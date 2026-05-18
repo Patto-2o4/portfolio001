@@ -1,6 +1,9 @@
 import AnimatedSection from "@/components/AnimatedSection";
+import { useLanguage } from "@/contexts/LanguageContext";
+import CtaButton from "@/components/ui/CtaButton";
 
 export default function About() {
+  const { t } = useLanguage();
   const decorativeIcons = [
     { id: 1, icon: "H", top: "10%", left: "10%", delay: "0s" },
     { id: 2, icon: "S", top: "20%", right: "15%", delay: "0.5s" },
@@ -49,33 +52,27 @@ export default function About() {
           <AnimatedSection direction="right">
             <div>
               <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
-                About
-                <br />
-                <span className="gradient-text">Me</span>
+                {t("aboutHeading")}
               </h2>
 
               <p className="text-lg text-gray-400 mb-6 leading-relaxed">
-                I'm a passionate 3D Designer with a deep love for creating immersive digital experiences.
-                My journey in design started with a curiosity about how things work, which evolved into
-                a career dedicated to bringing ideas to life through 3D visualization and animation.
+                {t("aboutText1")}
               </p>
 
               <p className="text-lg text-gray-400 mb-8 leading-relaxed">
-                With expertise in 3D modeling, animation, and product visualization, I've had the privilege
-                of working with brands ranging from startups to Fortune 500 companies. Each project is an
-                opportunity to push creative boundaries and deliver exceptional results.
+                {t("aboutText2")}
               </p>
 
               <div className="mb-8">
                 <h3 className="text-xl font-bold text-white mb-4">My Expertise</h3>
                 <div className="grid grid-cols-2 gap-4">
                   {[
-                    "3D Modeling",
-                    "3D Animation",
-                    "Product Design",
-                    "Motion Graphics",
-                    "VR/AR Development",
-                    "UI/UX Design",
+                    "UX/UI Design",
+                    "Design Systems",
+                    "Prototyping",
+                    "User Research",
+                    "Wireframing",
+                    "Interaction Design",
                   ].map((skill, index) => (
                     <div
                       key={index}
@@ -87,11 +84,9 @@ export default function About() {
                 </div>
               </div>
 
-              <a href="#contact">
-                <button className="btn-primary">
-                  Let's Work Together
-                </button>
-              </a>
+              <CtaButton href="#contact" variant="main">
+                Let's Work Together
+              </CtaButton>
             </div>
           </AnimatedSection>
         </div>

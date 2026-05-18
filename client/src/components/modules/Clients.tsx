@@ -1,11 +1,13 @@
+import { Box, Command, Cpu, Layers, Fingerprint, Triangle } from "lucide-react";
+
 export default function Clients() {
   const clients = [
-    { id: 1, name: "Fractal", logo: "F" },
-    { id: 2, name: "West Creative", logo: "W" },
-    { id: 3, name: "SCALER", logo: "S" },
-    { id: 4, name: "Design Studio", logo: "D" },
-    { id: 5, name: "Tech Innovators", logo: "T" },
-    { id: 6, name: "Creative Labs", logo: "C" },
+    { id: 1, name: "Fractal", logo: <Box className="w-10 h-10" /> },
+    { id: 2, name: "West Creative", logo: <Command className="w-10 h-10" /> },
+    { id: 3, name: "SCALER", logo: <Cpu className="w-10 h-10" /> },
+    { id: 4, name: "Design Studio", logo: <Layers className="w-10 h-10" /> },
+    { id: 5, name: "Tech Innovators", logo: <Fingerprint className="w-10 h-10" /> },
+    { id: 6, name: "Creative Labs", logo: <Triangle className="w-10 h-10" /> },
   ];
 
   return (

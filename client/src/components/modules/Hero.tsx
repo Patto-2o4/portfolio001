@@ -1,9 +1,9 @@
 import { motion, Variants } from "framer-motion";
 import { useState } from "react";
-import AnimatedSection from "@/components/AnimatedSection";
 import SplineInteractive from "@/components/SplineInteractive";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { Sparkles, MessageSquare, Briefcase } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 /**
  * MODULE: Hero Section
@@ -19,20 +19,21 @@ import { Sparkles, MessageSquare, Briefcase } from "lucide-react";
  */
 
 // URL mô hình 3D từ Spline - Thay đổi URL này bằng mô hình của bạn
-const SPLINE_URL = "https://prod.spline.design/wgI90cJyjVIqgKwS/scene";
+const SPLINE_URL = "https://prod.spline.design/wgI90cJyjVIqgKwS/scene.splinecode";
 
 export default function Hero() {
   const [splineTrigger, setSplineTrigger] = useState<string>("");
+  const { t } = useLanguage();
 
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
     const card = document.getElementById("contact-card");
     if (card) {
       card.scrollIntoView({ behavior: "smooth", block: "center" });
-      
+
       // Ignite quầng sáng tím 180px lập tức
       card.classList.add("contact-card-highlight");
-      
+
       // Gỡ bỏ sau 600ms
       setTimeout(() => {
         card.classList.remove("contact-card-highlight");
@@ -79,10 +80,10 @@ export default function Hero() {
         >
           {/* Main Headline */}
           <motion.h1
-            className="text-6xl md:text-7xl font-bold text-white mb-6 leading-tight"
+            className="text-6xl md:text-7xl font-bold text-white mb-6 leading-tight uppercase"
             variants={itemVariants}
           >
-            HI, I'M
+            {t("heroTitle")}
             <br />
             <span className="gradient-text">PATTO</span>
           </motion.h1>
@@ -92,8 +93,7 @@ export default function Hero() {
             className="text-xl md:text-2xl text-gray-400 mb-8 leading-relaxed"
             variants={itemVariants}
           >
-            I'm a 3D Designer & Creative Technologist specializing in immersive digital experiences.
-            Transforming ideas into stunning visual realities.
+            {t("heroSubtitle")}
           </motion.p>
 
           {/* Description */}
@@ -101,8 +101,7 @@ export default function Hero() {
             className="text-lg text-gray-500 mb-12 max-w-lg"
             variants={itemVariants}
           >
-            With 5+ years of experience in 3D modeling, animation, and product design, I've worked
-            with leading brands to create memorable digital experiences.
+            {t("heroDesc")}
           </motion.p>
 
           {/* CTA Buttons */}
@@ -112,11 +111,11 @@ export default function Hero() {
           >
             <a href="#contact" onClick={handleContactClick} className="btn-main group">
               <MessageSquare className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-110" />
-              CONTACT ME
+              {t("contactMe")}
             </a>
             <a href="#projects" className="btn-sec group">
               <Briefcase className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" />
-              VIEW MY WORK
+              {t("viewWork")}
             </a>
           </motion.div>
 
@@ -151,8 +150,8 @@ export default function Hero() {
           <div className="absolute inset-0 bg-gradient-to-br from-[#6366F1]/20 to-[#8B5CF6]/10 rounded-full blur-3xl"></div>
 
           {/* Spline 3D Model - Click/Hover to interact */}
-          <SplineInteractive 
-            url={SPLINE_URL} 
+          <SplineInteractive
+            url={SPLINE_URL}
             title="Interactive 3D Model"
             onTrigger={(trigger) => setSplineTrigger(trigger)}
           />
@@ -166,7 +165,7 @@ export default function Hero() {
         transition={{ duration: 2, repeat: Infinity }}
       >
         <p className="text-gray-500 text-sm">Scroll to explore</p>
-          <svg className="w-5 h-5 text-[#6366F1]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-5 h-5 text-[#6366F1]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
       </motion.div>

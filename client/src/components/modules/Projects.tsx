@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { projects } from "@/data/projects";
 import { ArrowUpRight } from "lucide-react";
 import CtaButton from "@/components/ui/CtaButton";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 /**
  * MODULE: Projects Section
@@ -11,11 +12,13 @@ import CtaButton from "@/components/ui/CtaButton";
  */
 
 export default function Projects() {
+  const { t } = useLanguage();
+
   return (
     <section id="projects" className="section-padding bg-black">
       <div className="container">
         <AnimatedSection direction="up">
-          <h2 className="section-title">Featured Projects</h2>
+          <h2 className="section-title">{t("projectsHeading")}</h2>
         </AnimatedSection>
 
         <div className="space-y-20">
@@ -55,18 +58,18 @@ export default function Projects() {
                   </div>
 
                   <CtaButton
-                    href={`/projects/${project.id}`}
+                    href={`/projects`}
                     variant="sec"
                     className="inline-flex items-center gap-2"
                   >
-                    <span>View Case Study</span>
+                    <span>View All Projects</span>
                     <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
                   </CtaButton>
                 </div>
 
                 {/* 3D Mockup Visual block */}
                 <div className={`${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                  <Link href={`/projects/${project.id}`}>
+                  <Link href={`/projects`}>
                     <div
                       className="relative h-96 lg:h-[500px] rounded-3xl overflow-hidden border border-[#6366F1]/20 group cursor-pointer bg-gradient-to-br from-[#121212] to-[#050505] hover:border-[#6366F1]/50 transition-all duration-500 shadow-2xl"
                     >
@@ -101,7 +104,7 @@ export default function Projects() {
         <AnimatedSection direction="up" delay={0.4}>
           <div className="mt-20 flex justify-center">
             <Link href="/projects" className="btn-main">
-              <span>VIEW ALL PROJECTS</span>
+              <span>{t("viewAllProjects")}</span>
             </Link>
           </div>
         </AnimatedSection>
