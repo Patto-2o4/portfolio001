@@ -9,18 +9,29 @@ export default function Header() {
   const isHome = location === "/";
   const [isDark, setIsDark] = useState(true);
 
-  // Khởi tạo theme
+  // Khởi tạo theme với localStorage, mặc định Dark Mode
   useEffect(() => {
-    const isDarkMode = document.documentElement.classList.contains("dark");
-    setIsDark(isDarkMode);
+    const savedTheme = localStorage.getItem("theme");
+    
+    if (savedTheme === "light") {
+      document.documentElement.classList.remove("dark");
+      setIsDark(false);
+    } else {
+      // Mặc định là Dark Mode
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+      setIsDark(true);
+    }
   }, []);
 
   const toggleTheme = () => {
     if (isDark) {
       document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
       setIsDark(false);
     } else {
       document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
       setIsDark(true);
     }
   };
@@ -80,14 +91,21 @@ export default function Header() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          {/* Theme Toggle Button */}
-          <button 
-            onClick={toggleTheme} 
-            className="p-2.5 rounded-lg bg-card border border-border hover:border-primary text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all shadow-sm"
+          {/* Theme Toggle Switch */}
+          <div 
+            onClick={toggleTheme}
+            className={`w-[60px] h-8 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 border border-border shadow-inner ${isDark ? 'bg-card' : 'bg-gray-200'}`}
             title="Toggle theme"
           >
-            {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-          </button>
+            <motion.div 
+              layout
+              className={`w-6 h-6 rounded-full shadow flex items-center justify-center ${isDark ? 'bg-primary' : 'bg-white'}`}
+              animate={{ x: isDark ? 28 : 0 }}
+              transition={{ type: "spring", stiffness: 500, damping: 30 }}
+            >
+              {isDark ? <Moon className="w-3.5 h-3.5 text-white" /> : <Sun className="w-3.5 h-3.5 text-orange-500" />}
+            </motion.div>
+          </div>
 
           <LanguageSwitcher />
 

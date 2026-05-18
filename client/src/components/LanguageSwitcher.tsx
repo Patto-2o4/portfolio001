@@ -23,6 +23,7 @@ export default function LanguageSwitcher({ onLanguageChange }: LanguageSwitcherP
     setLanguage(language);
     setIsOpen(false);
     onLanguageChange?.(language);
+    window.location.reload();
   };
 
   const currentLang = LANGUAGES.find((lang) => lang.code === currentLanguage);
@@ -32,7 +33,7 @@ export default function LanguageSwitcher({ onLanguageChange }: LanguageSwitcherP
       {/* Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-2 rounded-lg border border-[#6366F1]/20 hover:border-[#6366F1]/50 transition-colors text-gray-300 hover:text-[#6366F1]"
+        className="flex items-center gap-2 px-3 py-2 rounded-lg border border-[#6366F1]/20 hover:border-[#6366F1]/50 transition-colors text-muted-foreground hover:text-[#6366F1]"
         title="Change language"
       >
         <Globe className="w-4 h-4" />
@@ -47,7 +48,7 @@ export default function LanguageSwitcher({ onLanguageChange }: LanguageSwitcherP
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-full right-0 mt-2 w-48 rounded-lg bg-[#1A1A1A] border border-[#6366F1]/20 shadow-lg z-50 overflow-hidden"
+            className="absolute top-full right-0 mt-2 w-48 rounded-lg bg-card border border-[#6366F1]/20 shadow-lg z-50 overflow-hidden"
           >
             {LANGUAGES.map((lang) => (
               <button
@@ -56,13 +57,13 @@ export default function LanguageSwitcher({ onLanguageChange }: LanguageSwitcherP
                 className={`w-full px-4 py-3 text-left flex items-center gap-3 transition-colors ${
                   currentLanguage === lang.code
                     ? "bg-[#6366F1]/20 text-[#6366F1]"
-                    : "text-gray-300 hover:bg-[#6366F1]/10 hover:text-[#6366F1]"
+                    : "text-muted-foreground hover:bg-[#6366F1]/10 hover:text-[#6366F1]"
                 }`}
               >
                 <span className="text-lg">{lang.flag}</span>
                 <div>
-                  <p className="font-medium">{lang.name}</p>
-                  <p className="text-xs text-gray-500">{lang.code}</p>
+                  <p className="font-medium text-foreground">{lang.name}</p>
+                  <p className="text-xs text-muted-foreground">{lang.code}</p>
                 </div>
                 {currentLanguage === lang.code && (
                   <span className="ml-auto text-[#6366F1]">✓</span>
