@@ -3,6 +3,16 @@
 
   <head>
     <meta charset="UTF-8" />
+    <script>
+      (function() {
+        try {
+          const lang = localStorage.getItem("preferredLanguage") || "EN";
+          document.documentElement.classList.add('lang-' + lang.toLowerCase());
+        } catch (e) {
+          console.error(e);
+        }
+      })();
+    </script>
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1" />

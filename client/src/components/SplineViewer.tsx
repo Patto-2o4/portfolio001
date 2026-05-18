@@ -14,6 +14,8 @@
  * 5. Dán vào component này
  */
 
+import { useState } from "react";
+
 interface SplineViewerProps {
   url: string;
   title?: string;
@@ -23,20 +25,25 @@ export default function SplineViewer({
   url,
   title = "3D Model",
 }: SplineViewerProps) {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <div className="relative w-full h-full rounded-3xl overflow-hidden border border-[#6366F1]/20 group">
       {/* Loading State */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A1A] to-[#0A0A0A] flex items-center justify-center z-10">
-        <div className="text-center">
-          <div className="text-4xl mb-4 animate-spin">⚙️</div>
-          <p className="text-gray-400">Loading {title}...</p>
+      {isLoading && (
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A1A] to-[#0A0A0A] flex items-center justify-center z-10">
+          <div className="text-center">
+            <div className="text-4xl mb-4 animate-spin">⚙️</div>
+            <p className="text-gray-400">Loading {title}...</p>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Spline Iframe */}
       <iframe
         title={title}
         src={url}
+        onLoad={() => setIsLoading(false)}
         frameBorder="0"
         width="100%"
         height="100%"

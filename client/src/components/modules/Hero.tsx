@@ -68,53 +68,6 @@ export default function Hero() {
 
   return (
     <section className="hero-section relative overflow-hidden">
-      {/* Navigation Bar */}
-      <nav className="navbar">
-        <div className="container flex items-center justify-between h-20">
-          <motion.div
-            className="text-2xl font-black text-white tracking-wider"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            PATTO<span className="text-[#6366F1]">.</span>
-          </motion.div>
-
-          <motion.div
-            className="hidden md:flex gap-8 items-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <a href="#about" className="text-gray-300 hover:text-[#6366F1] transition-colors">
-              About
-            </a>
-            <a href="#clients" className="text-gray-300 hover:text-[#6366F1] transition-colors">
-              Customers
-            </a>
-            <a href="#projects" className="text-gray-300 hover:text-[#6366F1] transition-colors">
-              Projects
-            </a>
-            <a href="#contact" className="text-gray-300 hover:text-[#6366F1] transition-colors">
-              Contact
-            </a>
-            <div className="w-px h-6 bg-[#6366F1]/20"></div>
-            <LanguageSwitcher />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <a href="#contact" onClick={handleContactClick} className="btn-main hidden md:inline-flex group">
-              <Sparkles className="w-4 h-4 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-125" />
-              Get In Touch
-            </a>
-          </motion.div>
-        </div>
-      </nav>
-
       {/* Hero Content */}
       <div className="container flex flex-col md:flex-row items-center justify-between gap-12 pt-32 pb-20">
         {/* Left Side - Text Content */}

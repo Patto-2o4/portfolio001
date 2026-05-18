@@ -30,6 +30,9 @@ function Router() {
 //   to keep consistent foreground/background color across components
 // - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
 
+import Header from "./components/modules/Header";
+import Footer from "./components/modules/Footer";
+
 function App() {
   return (
     <ErrorBoundary>
@@ -41,7 +44,9 @@ function App() {
           <Toaster />
           <CustomCursor />
           <DiscordPopup />
+          <Header />
           <Router />
+          <Footer />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

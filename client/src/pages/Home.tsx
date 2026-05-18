@@ -19,7 +19,6 @@ export default function Home() {
       <Projects />
       <Testimonials />
       <Contact />
-      <Footer />
     </div>
   );
 }

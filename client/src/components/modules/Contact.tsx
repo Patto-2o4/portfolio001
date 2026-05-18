@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import emailjs from "@emailjs/browser";
 import AnimatedSection from "@/components/AnimatedSection";
+import { Check, Loader2 } from "lucide-react";
 
 /**
  * MODULE: Contact Section
@@ -32,6 +33,7 @@ export default function Contact() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -70,6 +72,11 @@ export default function Contact() {
       if (response.ok) {
         toast.success("Message sent successfully! I will respond as soon as possible.");
         setFormData({ name: "", email: "", message: "" });
+        setIsSuccess(true);
+        // Reset success state after 4 seconds to allow resubmission
+        setTimeout(() => {
+          setIsSuccess(false);
+        }, 4000);
       } else {
         throw new Error("FormSubmit submission failed");
       }
@@ -187,7 +194,7 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="John Doe"
-                    className="w-full px-4 py-3 rounded-lg bg-[#1A1A1A] border border-[#6366F1]/20 text-white placeholder-gray-600 focus:border-[#6366F1] focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-lg bg-[#1A1A1A] border border-[#6366F1]/20 text-white placeholder-gray-500 focus:border-[#6366F1] focus:ring-2 focus:ring-[#6366F1]/30 focus:outline-none transition-all duration-300"
                   />
                 </div>
 
@@ -202,7 +209,7 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="john@example.com"
-                    className="w-full px-4 py-3 rounded-lg bg-[#1A1A1A] border border-[#6366F1]/20 text-white placeholder-gray-600 focus:border-[#6366F1] focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-lg bg-[#1A1A1A] border border-[#6366F1]/20 text-white placeholder-gray-500 focus:border-[#6366F1] focus:ring-2 focus:ring-[#6366F1]/30 focus:outline-none transition-all duration-300"
                   />
                 </div>
 
@@ -217,16 +224,34 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="Tell me about your project..."
                     rows={5}
-                    className="w-full px-4 py-3 rounded-lg bg-[#1A1A1A] border border-[#6366F1]/20 text-white placeholder-gray-600 focus:border-[#6366F1] focus:outline-none transition-colors resize-none"
+                    className="w-full px-4 py-3 rounded-lg bg-[#1A1A1A] border border-[#6366F1]/20 text-white placeholder-gray-500 focus:border-[#6366F1] focus:ring-2 focus:ring-[#6366F1]/30 focus:outline-none transition-all duration-300 resize-none"
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
-                  disabled={isSubmitting}
-                  className="btn-main w-full"
+                  disabled={isSubmitting || isSuccess}
+                  className={`w-full flex items-center justify-center gap-2 py-4 rounded-xl font-bold uppercase tracking-wider text-sm transition-all duration-500 shadow-lg ${
+                    isSuccess
+                      ? "bg-emerald-500 text-white hover:bg-emerald-600 shadow-[0_0_20px_rgba(16,185,129,0.4)] border border-emerald-400/30"
+                      : isSubmitting
+                      ? "bg-indigo-600/50 text-white/70 border border-indigo-500/20 cursor-not-allowed"
+                      : "btn-main"
+                  }`}
                 >
-                  {isSubmitting ? "Sending..." : "Send Message"}
+                  {isSuccess ? (
+                    <>
+                      <Check className="w-5 h-5 animate-bounce" />
+                      <span>Sent Successfully!</span>
+                    </>
+                  ) : isSubmitting ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      <span>Sending Message...</span>
+                    </>
+                  ) : (
+                    "Send Message"
+                  )}
                 </button>
               </form>
 
