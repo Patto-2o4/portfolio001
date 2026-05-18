@@ -2,6 +2,63 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@utility btn-main {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #FFFFFF;
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+  border: none;
+  border-radius: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+  cursor: pointer;
+
+  &:hover {
+    background: linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+}
+
+@utility btn-sec {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #6366F1;
+  background: transparent;
+  border: 2px solid #6366F1;
+  border-radius: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+
+  &:hover {
+    color: #FFFFFF;
+    background: #6366F1;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.98);
+  }
+}
+
 /* Import Google Fonts cho Typography hiện đại */
 
 @custom-variant dark (&:is(.dark *));
@@ -172,17 +229,12 @@
      Ghi chú: Sử dụng các class này trong JSX để tạo style nhất quán
   */
 
-  /* Nút CTA chính - Xanh lám/Tím */
+  /* Khai báo kế thừa để tương thích ngược */
   .btn-primary {
-    @apply px-8 py-3 bg-gradient-to-r from-[#6366F1] to-[#8B5CF6] text-white font-semibold rounded-lg
-           hover:from-[#7C3AED] hover:to-[#A78BFA] transition-all duration-300 ease-out
-           active:scale-95 transform;
+    @apply btn-main;
   }
-
-  /* Nút phụ - Outline */
   .btn-secondary {
-    @apply px-8 py-3 border-2 border-[#6366F1] text-[#6366F1] font-semibold rounded-lg
-           hover:bg-[#6366F1] hover:text-white transition-all duration-300 ease-out;
+    @apply btn-sec;
   }
 
   /* Thẻ dự án - Card */
