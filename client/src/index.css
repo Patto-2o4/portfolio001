@@ -2,6 +2,29 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* =============================================================================
+   BTN-MAIN IDLE ANIMATIONS
+   =============================================================================
+   Có 2 hiệu ứng chạy vòng lặp vô tận:
+   1. btn-shimmer : Tia sáng trắng chạy quét từ trái sang phải (shimmer sweep)
+   2. btn-pulse-glow : Quầng sáng tím thở phồng xẹp nhịp nhàng (breathing glow)
+   
+   === CÁCH CHỈNH SỬA ===
+   - Thay đổi tốc độ shimmer: 'animation: btn-shimmer 2.5s linear infinite' → đổi 2.5s
+   - Thay đổi tốc độ glow:    'animation: btn-pulse-glow 2s ease-in-out infinite' → đổi 2s
+   - Tắt shimmer: Xóa dòng 'animation: btn-shimmer ...' trong ::after
+   - Tắt glow:    Xóa dòng 'animation: btn-pulse-glow ...' trong btn-main
+*/
+@keyframes btn-shimmer {
+  0%   { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(300%) skewX(-15deg); }
+}
+
+@keyframes btn-pulse-glow {
+  0%, 100% { box-shadow: 0 4px 20px rgba(153, 23, 255, 0.3), 0 0 0 1px rgba(153, 23, 255, 0.1); }
+  50%       { box-shadow: 0 4px 35px rgba(153, 23, 255, 0.6), 0 0 20px rgba(153, 23, 255, 0.25), 0 0 0 1px rgba(153, 23, 255, 0.2); }
+}
+
 @utility btn-main {
   display: inline-flex;
   align-items: center;
@@ -13,13 +36,40 @@
   color: #FFFFFF;
   background: linear-gradient(135deg, #7C3AED 0%, #9917FF 100%);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 9999px; /* Pill shape exactly like the image */
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 20px rgba(153, 23, 255, 0.3), 0 0 0 1px rgba(153, 23, 255, 0.1);
+  border-radius: 9999px; /* Hình dạng pill (thuốc) hoàn hảo */
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease;
   cursor: pointer;
   position: relative;
-  overflow: visible; /* Prevent clipping of the huge 180px glow! */
-  
+  overflow: hidden; /* Cần để cắt hiệu ứng shimmer đúng vị trí */
+
+  /* --- IDLE ANIMATION 1: Quầng sáng tím thở nhịp nhàng (Breathing Glow) ---
+     animation: [tên keyframe] [thời gian] [timing] [lặp]
+     - 2s = chu kỳ thở 2 giây → đổi thành 3s để thở chậm hơn, 1s để nhanh hơn
+     - ease-in-out = vào ra mượt, tự nhiên
+     - infinite = lặp vô tận                                                      */
+  animation: btn-pulse-glow 2s ease-in-out infinite;
+
+  /* --- IDLE ANIMATION 2: Tia sáng chạy quét (Shimmer Sweep) ---
+     Dùng ::after pseudo-element để tạo tia sáng trắng chạy qua nút              */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;       /* Độ rộng của tia sáng: 40% → tăng để tia to hơn         */
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(255, 255, 255, 0.18) 50%,  /* 0.18 = độ sáng tia → tăng để sáng hơn */
+      transparent 100%
+    );
+    /* 2.5s = tia quét hết 1 vòng trong 2.5 giây → đổi để thay đổi tốc độ       */
+    animation: btn-shimmer 2.5s linear infinite;
+    pointer-events: none;
+    border-radius: 9999px;
+  }
+
   /* Inner glassmorphism highlight at the top edge of the button */
   &::before {
     content: '';
@@ -29,13 +79,21 @@
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 50%);
     pointer-events: none;
     transition: opacity 0.3s ease;
+    z-index: 1;
+  }
+
+  /* Đảm bảo nội dung (text, icon) nằm trên tia sáng */
+  & > * {
+    position: relative;
+    z-index: 2;
   }
 
   &:hover {
     background: linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%);
     transform: translateY(-3px) scale(1.04);
-    /* MAGICAL GLOW specs from Figma: X=0, Y=0, Blur=180px, Color=#9917FF (100% opacity) */
-    box-shadow: 0 0 180px 0 #9917FF, 
+    /* MAGICAL GLOW specs from Figma: X=0, Y=0, Blur=180px, Color=#9917FF */
+    animation: none; /* Tắt idle glow khi hover để glow hover chiếm quyền */
+    box-shadow: 0 0 180px 0 #9917FF,
                 0 0 40px 0 rgba(153, 23, 255, 0.7),
                 0 8px 25px 0 rgba(153, 23, 255, 0.5);
   }
@@ -49,6 +107,7 @@
   &:disabled {
     opacity: 0.6;
     pointer-events: none;
+    animation: none;
   }
 }
 
@@ -384,4 +443,37 @@ body {
   .cursor-pointer {
     cursor: none !important;
   }
+}
+
+/* =============================================================================
+   MULTILINGUAL TYPOGRAPHY LINE-HEIGHT OPTIMIZATIONS
+   =============================================================================
+   Tối ưu hóa line-height động để hiển thị tiếng Việt (các thanh dấu không bị đè)
+   và tiếng Trung (các nét chữ hán phồn thể/giản thể có không gian thở).
+*/
+.lang-vi body, 
+.lang-vi p, 
+.lang-vi li, 
+.lang-vi span:not(.font-mono), 
+.lang-vi h1, 
+.lang-vi h2, 
+.lang-vi h3, 
+.lang-vi h4, 
+.lang-vi h5, 
+.lang-vi h6 {
+  line-height: 1.625 !important; /* Tương đương leading-relaxed giúp dấu tiếng Việt thông thoáng */
+}
+
+.lang-zh body, 
+.lang-zh p, 
+.lang-zh li, 
+.lang-zh span:not(.font-mono), 
+.lang-zh h1, 
+.lang-zh h2, 
+.lang-zh h3, 
+.lang-zh h4, 
+.lang-zh h5, 
+.lang-zh h6 {
+  line-height: 1.68 !important; /* Tăng khoảng cách dòng giúp nét chữ Hán cực kỳ dễ đọc */
+  letter-spacing: 0.03em !important; /* Tăng nhẹ tracking cho ký tự Hán */
 }
