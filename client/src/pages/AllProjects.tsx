@@ -40,11 +40,12 @@ export default function AllProjects() {
                   {/* Thumbnail / Placeholder */}
                   <div className="relative h-64 bg-gradient-to-br from-[#181818] to-[#0A0A0A] flex items-center justify-center overflow-hidden">
                     <div className="absolute inset-0 bg-[#6366F1]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    
-                    {/* Giả lập ảnh 3D hoặc hiển thị ảnh thật nếu có */}
-                    <div className="text-7xl font-black text-white/5 group-hover:text-white/20 group-hover:scale-110 transition-all duration-500 font-mono">
-                      {project.image}
-                    </div>
+                    {/* Hiển thị ảnh thật */}
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
+                    />
 
                     <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center border border-white/10 group-hover:bg-[#6366F1] group-hover:border-[#6366F1] transition-colors duration-300">
                       <ArrowUpRight className="w-5 h-5 text-white" />

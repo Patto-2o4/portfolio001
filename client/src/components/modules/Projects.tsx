@@ -2,6 +2,7 @@ import AnimatedSection from "@/components/AnimatedSection";
 import { Link } from "wouter";
 import { projects } from "@/data/projects";
 import { ArrowUpRight } from "lucide-react";
+import CtaButton from "@/components/ui/CtaButton";
 
 /**
  * MODULE: Projects Section
@@ -53,13 +54,14 @@ export default function Projects() {
                     </span>
                   </div>
 
-                  <Link
+                  <CtaButton
                     href={`/projects/${project.id}`}
-                    className="btn-primary inline-flex items-center gap-2 group"
+                    variant="sec"
+                    className="inline-flex items-center gap-2"
                   >
                     <span>View Case Study</span>
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">-&gt;</span>
-                  </Link>
+                    <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  </CtaButton>
                 </div>
 
                 {/* 3D Mockup Visual block */}
@@ -79,11 +81,13 @@ export default function Projects() {
                         <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform duration-300" />
                       </div>
 
-                      {/* Display large initial visual letter with glow */}
-                      <div className="relative w-full h-full flex items-center justify-center select-none">
-                        <div className="text-9xl font-black text-white/5 group-hover:text-white/20 group-hover:scale-110 group-hover:shadow-[0_0_100px_rgba(99,102,241,0.2)] transition-all duration-700 font-mono">
-                          {project.image}
-                        </div>
+                      {/* Display Real Image */}
+                      <div className="relative w-full h-full overflow-hidden">
+                        <img 
+                          src={project.image} 
+                          alt={project.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 group-hover:opacity-100"
+                        />
                       </div>
                     </div>
                   </Link>
