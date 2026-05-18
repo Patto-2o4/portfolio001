@@ -16,7 +16,7 @@ import { X } from "lucide-react";
  * 3. Thay bang URL Discord cua ban
  */
 
-const DISCORD_URL = "https://discord.gg/"; // Thay bang URL Discord cua ban
+const DISCORD_URL = "https://discord.gg/XCfkTu7ma6"; // Thay bang URL Discord cua ban
 
 export default function DiscordPopup() {
   const [isOpen, setIsOpen] = useState(false);

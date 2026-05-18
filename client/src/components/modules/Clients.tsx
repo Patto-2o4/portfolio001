@@ -9,7 +9,7 @@ export default function Clients() {
   ];
 
   return (
-    <section id="clients" className="section-padding bg-black border-y border-[#FF006E]/20">
+    <section id="clients" className="section-padding bg-black border-y border-accent/20">
       <div className="container">
         <h2 className="section-title">Trusted by Leading Brands</h2>
 
@@ -21,12 +21,12 @@ export default function Clients() {
             {clients.map((client) => (
               <div
                 key={client.id}
-                className="flex items-center gap-4 whitespace-nowrap min-w-max px-8 py-6 rounded-lg border border-[#FF006E]/20 hover:border-[#FF006E] transition-colors duration-300 group"
+                className="flex items-center gap-4 whitespace-nowrap min-w-max px-8 py-6 rounded-lg border border-accent/20 hover:border-accent transition-colors duration-300 group"
               >
                 <span className="text-4xl group-hover:scale-110 transition-transform duration-300">
                   {client.logo}
                 </span>
-                <span className="text-lg font-semibold text-gray-300 group-hover:text-[#FF006E] transition-colors">
+                <span className="text-lg font-semibold text-gray-300 group-hover:text-accent transition-colors">
                   {client.name}
                 </span>
               </div>
@@ -35,12 +35,12 @@ export default function Clients() {
             {clients.map((client) => (
               <div
                 key={`duplicate-${client.id}`}
-                className="flex items-center gap-4 whitespace-nowrap min-w-max px-8 py-6 rounded-lg border border-[#FF006E]/20 hover:border-[#FF006E] transition-colors duration-300 group"
+                className="flex items-center gap-4 whitespace-nowrap min-w-max px-8 py-6 rounded-lg border border-accent/20 hover:border-accent transition-colors duration-300 group"
               >
                 <span className="text-4xl group-hover:scale-110 transition-transform duration-300">
                   {client.logo}
                 </span>
-                <span className="text-lg font-semibold text-gray-300 group-hover:text-[#FF006E] transition-colors">
+                <span className="text-lg font-semibold text-gray-300 group-hover:text-accent transition-colors">
                   {client.name}
                 </span>
               </div>
@@ -50,15 +50,15 @@ export default function Clients() {
 
         <div className="grid grid-cols-3 gap-8 mt-20">
           <div className="text-center">
-            <div className="text-4xl font-bold text-[#FF006E] mb-2">50+</div>
+            <div className="text-4xl font-bold text-accent mb-2">50+</div>
             <p className="text-gray-400">Projects Completed</p>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold text-[#FF006E] mb-2">30+</div>
+            <div className="text-4xl font-bold text-accent mb-2">30+</div>
             <p className="text-gray-400">Happy Clients</p>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold text-[#FF006E] mb-2">5+</div>
+            <div className="text-4xl font-bold text-accent mb-2">5+</div>
             <p className="text-gray-400">Years Experience</p>
           </div>
         </div>

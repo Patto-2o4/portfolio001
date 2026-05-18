@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
 /* Import Google Fonts cho Typography hiện đại */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -47,7 +47,7 @@
 
 /* ========== DARK MODE - Bảng màu chính ==========
    Ghi chú: Website sử dụng Dark Mode (nền đen, chữ trắng)
-   Màu nhấn chính: Hồng Neon (#FF006E)
+   Màu nhấn chính: Tím Nhạt (#A78BFA)
    Để thay đổi màu, chỉnh sửa giá trị hex dưới đây
 */
 :root {
@@ -74,19 +74,19 @@
   --secondary-foreground: oklch(0.8 0.001 0);
   --muted: oklch(0.2 0.001 0);
   --muted-foreground: oklch(0.65 0.001 0);
-  --accent: #FF006E;
+  --accent: #A78BFA;
   --accent-foreground: oklch(0.95 0.001 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
   --border: oklch(0.2 0.001 0);
   --input: oklch(0.15 0.001 0);
-  --ring: #FF006E;
+  --ring: #A78BFA;
   --sidebar: oklch(0.12 0.001 0);
   --sidebar-foreground: oklch(0.95 0.001 0);
-  --sidebar-accent: #FF006E;
+  --sidebar-accent: #A78BFA;
   --sidebar-accent-foreground: oklch(0.95 0.001 0);
   --sidebar-border: oklch(0.2 0.001 0);
-  --sidebar-ring: #FF006E;
+  --sidebar-ring: #A78BFA;
 }
 
 .dark {

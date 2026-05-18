@@ -46,30 +46,36 @@ export default function Contact() {
     setIsSubmitting(true);
 
     if (!formData.name || !formData.email || !formData.message) {
-      toast.error("Vui long dien day du tat ca cac truong");
+      toast.error("Please fill in all fields");
       setIsSubmitting(false);
       return;
     }
 
     try {
-      // Gui email qua EmailJS
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_email: RECIPIENT_EMAIL,
+      // Gửi email qua FormSubmit.co AJAX trực tiếp tới mail người dùng
+      const response = await fetch(`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
         },
-        EMAILJS_PUBLIC_KEY
-      );
+        body: JSON.stringify({
+          Name: formData.name,
+          Email: formData.email,
+          Message: formData.message,
+          _subject: `New Portfolio Message from ${formData.name}`
+        })
+      });
 
-      toast.success("Tin nhan da duoc gui thanh cong! Toi se phan hoi trong 24 gio.");
-      setFormData({ name: "", email: "", message: "" });
+      if (response.ok) {
+        toast.success("Message sent successfully! I will respond as soon as possible.");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        throw new Error("FormSubmit submission failed");
+      }
     } catch (error) {
-      console.error("EmailJS error:", error);
-      toast.error("Co loi khi gui tin nhan. Vui long thu lai.");
+      console.error("Email submission error:", error);
+      toast.error("An error occurred while sending your message. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -89,7 +95,7 @@ export default function Contact() {
             <span className="gradient-text">TOUCH</span>
           </h2>
           <p className="text-center text-gray-400 text-lg mb-16 max-w-2xl mx-auto">
-            Co du an trong dau? Hay cung toi tao ra dieu gi tuyet voi.
+            Have a project in mind? Let's create something amazing together.
           </p>
         </AnimatedSection>
 
@@ -123,24 +129,42 @@ export default function Contact() {
 
               <div className="mb-12">
                 <p className="text-gray-500 text-sm uppercase tracking-widest mb-4">Follow Me</p>
-                <div className="flex gap-6">
+                <div className="flex gap-4">
                   <a
-                    href="#"
-                    className="w-12 h-12 rounded-full border border-[#6366F1] flex items-center justify-center text-[#6366F1] hover:bg-[#6366F1] hover:text-white transition-all duration-300 text-lg"
+                    href="https://www.facebook.com/pham.tuan.anh.29784"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 rounded-full border border-[#6366F1] flex items-center justify-center text-[#6366F1] hover:bg-[#6366F1] hover:text-white transition-all duration-300 text-sm font-semibold"
+                    title="Facebook"
                   >
-                    f
+                    FB
                   </a>
                   <a
-                    href="#"
-                    className="w-12 h-12 rounded-full border border-[#6366F1] flex items-center justify-center text-[#6366F1] hover:bg-[#6366F1] hover:text-white transition-all duration-300 text-lg"
+                    href="https://www.instagram.com/patto_2o4/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 rounded-full border border-[#6366F1] flex items-center justify-center text-[#6366F1] hover:bg-[#6366F1] hover:text-white transition-all duration-300 text-sm font-semibold"
+                    title="Instagram"
                   >
-                    t
+                    IG
                   </a>
                   <a
-                    href="#"
-                    className="w-12 h-12 rounded-full border border-[#6366F1] flex items-center justify-center text-[#6366F1] hover:bg-[#6366F1] hover:text-white transition-all duration-300 text-lg"
+                    href="https://www.behance.net/lnguyn106"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 rounded-full border border-[#6366F1] flex items-center justify-center text-[#6366F1] hover:bg-[#6366F1] hover:text-white transition-all duration-300 text-sm font-semibold"
+                    title="Behance"
                   >
-                    in
+                    BE
+                  </a>
+                  <a
+                    href="https://www.tiktok.com/@tuananhcutehehe?lang=vi-VN"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 rounded-full border border-[#6366F1] flex items-center justify-center text-[#6366F1] hover:bg-[#6366F1] hover:text-white transition-all duration-300 text-sm font-semibold"
+                    title="Tiktok"
+                  >
+                    TT
                   </a>
                 </div>
               </div>
@@ -207,7 +231,7 @@ export default function Contact() {
               </form>
 
               <p className="text-xs text-gray-500 text-center mt-4">
-                Toi se phan hoi trong 24 gio
+                I will respond within 24 hours
               </p>
             </div>
           </AnimatedSection>

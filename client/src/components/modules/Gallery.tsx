@@ -62,10 +62,10 @@ export default function Gallery() {
             <button className="px-6 py-2 rounded-full border border-gray-600 text-gray-400 font-semibold hover:border-[#6366F1] hover:text-[#6366F1] transition-all duration-300">
               3D Modeling
             </button>
-            <button className="px-6 py-2 rounded-full border border-gray-600 text-gray-400 font-semibold hover:border-[#FF006E] hover:text-[#FF006E] transition-all duration-300">
+            <button className="px-6 py-2 rounded-full border border-gray-600 text-gray-400 font-semibold hover:border-accent hover:text-accent transition-all duration-300">
               Animation
             </button>
-            <button className="px-6 py-2 rounded-full border border-gray-600 text-gray-400 font-semibold hover:border-[#FF006E] hover:text-[#FF006E] transition-all duration-300">
+            <button className="px-6 py-2 rounded-full border border-gray-600 text-gray-400 font-semibold hover:border-accent hover:text-accent transition-all duration-300">
               Design
             </button>
           </div>

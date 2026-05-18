@@ -59,7 +59,7 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            ALEX<span className="text-[#6366F1]">.</span>
+            PATTO<span className="text-[#6366F1]">.</span>
           </motion.div>
 
           <motion.div
@@ -112,7 +112,7 @@ export default function Hero() {
           >
             HI, I'M
             <br />
-            <span className="gradient-text">ALEX</span>
+            <span className="gradient-text">TUAN ANH</span>
           </motion.h1>
 
           {/* Sub Headline */}
@@ -138,7 +138,7 @@ export default function Hero() {
             className="flex gap-6 flex-wrap"
             variants={itemVariants}
           >
-            <a href="mailto:alex@example.com">
+            <a href="mailto:Patto2k4@gmail.com">
               <Button className="btn-primary">
                 CONTACT ME
               </Button>
@@ -155,14 +155,17 @@ export default function Hero() {
             className="flex gap-6 mt-12"
             variants={itemVariants}
           >
-            <a href="#" className="text-gray-400 hover:text-[#FF006E] transition-colors text-sm">
+            <a href="https://www.facebook.com/pham.tuan.anh.29784" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-accent transition-colors text-sm">
+              Facebook
+            </a>
+            <a href="https://www.instagram.com/patto_2o4/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-accent transition-colors text-sm">
               Instagram
             </a>
-            <a href="#" className="text-gray-400 hover:text-[#FF006E] transition-colors text-sm">
+            <a href="https://www.behance.net/lnguyn106" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-accent transition-colors text-sm">
               Behance
             </a>
-            <a href="#" className="text-gray-400 hover:text-[#FF006E] transition-colors text-sm">
-              LinkedIn
+            <a href="https://www.tiktok.com/@tuananhcutehehe?lang=vi-VN" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-accent transition-colors text-sm">
+              Tiktok
             </a>
           </motion.div>
         </motion.div>

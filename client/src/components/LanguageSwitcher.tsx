@@ -33,7 +33,10 @@ const LANGUAGES: { code: Language; name: string; flag: string }[] = [
 
 export default function LanguageSwitcher({ onLanguageChange }: LanguageSwitcherProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [currentLanguage, setCurrentLanguage] = useState<Language>("EN");
+  const [currentLanguage, setCurrentLanguage] = useState<Language>(() => {
+    const stored = localStorage.getItem("preferredLanguage");
+    return (stored as Language) || "EN";
+  });
 
   const handleLanguageChange = (language: Language) => {
     setCurrentLanguage(language);
@@ -43,8 +46,26 @@ export default function LanguageSwitcher({ onLanguageChange }: LanguageSwitcherP
     // Luu vao localStorage
     localStorage.setItem("preferredLanguage", language);
 
-    // Reload trang de ap dung ngon ngu
-    // window.location.reload();
+    // Thiet lap cookie googtrans cho Google Translate
+    const domain = window.location.hostname;
+    
+    // Xoa cookie cu truoc khi set cookie moi
+    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${domain};`;
+    document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.${domain};`;
+
+    if (language === "VI") {
+      document.cookie = "googtrans=/en/vi; path=/;";
+      document.cookie = `googtrans=/en/vi; path=/; domain=${domain};`;
+      document.cookie = `googtrans=/en/vi; path=/; domain=.${domain};`;
+    } else if (language === "ZH") {
+      document.cookie = "googtrans=/en/zh-CN; path=/;";
+      document.cookie = `googtrans=/en/zh-CN; path=/; domain=${domain};`;
+      document.cookie = `googtrans=/en/zh-CN; path=/; domain=.${domain};`;
+    }
+
+    // Reload trang de ap dung ngon ngu moi
+    window.location.reload();
   };
 
   const currentLang = LANGUAGES.find((lang) => lang.code === currentLanguage);
