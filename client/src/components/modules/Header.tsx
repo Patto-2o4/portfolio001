@@ -72,26 +72,26 @@ export default function Header() {
           <a href={isHome ? "#contact" : "/#contact"} className="text-muted-foreground hover:text-primary transition-colors">
             Contact
           </a>
-          <div className="w-px h-6 bg-border"></div>
-          
+        </motion.div>
+
+        <motion.div
+          className="flex items-center gap-3"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
           {/* Theme Toggle Button */}
           <button 
             onClick={toggleTheme} 
-            className="p-2 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-colors"
+            className="p-2.5 rounded-lg bg-card border border-border hover:border-primary text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all shadow-sm"
             title="Toggle theme"
           >
             {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </button>
 
           <LanguageSwitcher />
-        </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <a href={isHome ? "#contact" : "/#contact"} onClick={handleContactClick} className="btn-main hidden md:inline-flex group">
+          <a href={isHome ? "#contact" : "/#contact"} onClick={handleContactClick} className="btn-main hidden md:inline-flex group ml-2">
             <Sparkles className="w-4 h-4 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-125" />
             <span>Get In Touch</span>
           </a>

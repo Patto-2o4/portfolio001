@@ -194,7 +194,7 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="John Doe"
-                    className="w-full px-4 py-3 rounded-lg bg-[#1A1A1A] border border-[#6366F1]/20 text-foreground placeholder-gray-500 focus:border-[#6366F1] focus:ring-2 focus:ring-[#6366F1]/30 focus:outline-none transition-all duration-300"
+                    className="w-full px-4 py-3 rounded-lg bg-card border border-[#6366F1]/20 text-foreground placeholder-muted-foreground focus:border-[#6366F1] focus:ring-2 focus:ring-[#6366F1]/30 focus:outline-none transition-all duration-300"
                   />
                 </div>
 
@@ -209,7 +209,7 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="john@example.com"
-                    className="w-full px-4 py-3 rounded-lg bg-[#1A1A1A] border border-[#6366F1]/20 text-foreground placeholder-gray-500 focus:border-[#6366F1] focus:ring-2 focus:ring-[#6366F1]/30 focus:outline-none transition-all duration-300"
+                    className="w-full px-4 py-3 rounded-lg bg-card border border-[#6366F1]/20 text-foreground placeholder-muted-foreground focus:border-[#6366F1] focus:ring-2 focus:ring-[#6366F1]/30 focus:outline-none transition-all duration-300"
                   />
                 </div>
 
@@ -224,7 +224,7 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="Tell me about your project..."
                     rows={5}
-                    className="w-full px-4 py-3 rounded-lg bg-[#1A1A1A] border border-[#6366F1]/20 text-foreground placeholder-gray-500 focus:border-[#6366F1] focus:ring-2 focus:ring-[#6366F1]/30 focus:outline-none transition-all duration-300 resize-none"
+                    className="w-full px-4 py-3 rounded-lg bg-card border border-[#6366F1]/20 text-foreground placeholder-muted-foreground focus:border-[#6366F1] focus:ring-2 focus:ring-[#6366F1]/30 focus:outline-none transition-all duration-300 resize-none"
                   ></textarea>
                 </div>
 

@@ -51,7 +51,7 @@ export default function Testimonials() {
         <div className="grid-2 lg:grid-cols-2">
           {testimonials.map((testimonial, index) => (
             <AnimatedItem key={testimonial.id} index={index}>
-              <div className="p-8 rounded-2xl border border-accent/20 hover:border-accent hover:bg-accent/5 transition-all duration-300 group">
+              <div className="bg-card p-8 rounded-2xl border border-accent/20 hover:border-accent hover:bg-accent/5 transition-all duration-300 group">
                 <div className="flex gap-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <span key={i} className="text-accent text-lg">
@@ -85,15 +85,15 @@ export default function Testimonials() {
 
         <AnimatedSection delay={0.4} direction="up">
           <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-8 rounded-2xl border border-accent/20 hover:border-accent transition-colors">
+            <div className="bg-card text-center p-8 rounded-2xl border border-accent/20 hover:border-accent transition-colors">
               <div className="text-5xl font-bold text-accent mb-2">4.9/5</div>
               <p className="text-muted-foreground">Average Rating</p>
             </div>
-            <div className="text-center p-8 rounded-2xl border border-accent/20 hover:border-accent transition-colors">
+            <div className="bg-card text-center p-8 rounded-2xl border border-accent/20 hover:border-accent transition-colors">
               <div className="text-5xl font-bold text-accent mb-2">30+</div>
               <p className="text-muted-foreground">Happy Clients</p>
             </div>
-            <div className="text-center p-8 rounded-2xl border border-accent/20 hover:border-accent transition-colors">
+            <div className="bg-card text-center p-8 rounded-2xl border border-accent/20 hover:border-accent transition-colors">
               <div className="text-5xl font-bold text-accent mb-2">100%</div>
               <p className="text-muted-foreground">Satisfaction Rate</p>
             </div>

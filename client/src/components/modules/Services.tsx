@@ -47,7 +47,7 @@ export default function Services() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {services.map((service, index) => (
             <AnimatedItem key={service.id} index={index}>
-              <div className="group p-8 rounded-2xl border border-accent/20 hover:border-accent hover:bg-accent/5 transition-all duration-300 relative overflow-hidden">
+              <div className="bg-card p-10 rounded-3xl border border-[#6366F1]/20 group-hover:border-[#6366F1] transition-colors duration-500 h-full relative overflow-hidden">
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <div className="absolute inset-0 bg-gradient-to-r from-accent/0 via-accent/5 to-accent/0"></div>
                 </div>
