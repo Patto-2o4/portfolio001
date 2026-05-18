@@ -15,7 +15,7 @@ export default function Projects() {
   const { t } = useLanguage();
 
   return (
-    <section id="projects" className="section-padding bg-black">
+    <section id="projects" className="section-padding bg-background">
       <div className="container">
         <AnimatedSection direction="up">
           <h2 className="section-title">{t("projectsHeading")}</h2>
@@ -39,15 +39,15 @@ export default function Projects() {
                     Project {project.number}
                   </p>
 
-                  <h3 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">
+                  <h3 className="text-4xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
                     {project.title}
                   </h3>
 
-                  <p className="text-lg text-gray-400 mb-6 font-medium">
-                    <span className="font-semibold text-white">Client:</span> {project.client}
+                  <p className="text-lg text-muted-foreground mb-6 font-medium">
+                    <span className="font-semibold text-foreground">Client:</span> {project.client}
                   </p>
 
-                  <p className="text-lg text-gray-400 mb-8 leading-relaxed font-normal">
+                  <p className="text-lg text-muted-foreground mb-8 leading-relaxed font-normal">
                     {project.description}
                   </p>
 
@@ -80,7 +80,7 @@ export default function Projects() {
                       </div>
 
                       {/* Glassmorphic static click indicator for Mobile & Desktop */}
-                      <div className="absolute top-6 right-6 w-12 h-12 rounded-full border border-[#6366F1]/30 bg-black/60 backdrop-blur-md flex items-center justify-center text-[#6366F1] group-hover:text-white group-hover:border-[#6366F1]/80 transition-all duration-300 shadow-lg z-10">
+                      <div className="absolute top-6 right-6 w-12 h-12 rounded-full border border-[#6366F1]/30 bg-background/60 backdrop-blur-md flex items-center justify-center text-[#6366F1] group-hover:text-foreground group-hover:border-[#6366F1]/80 transition-all duration-300 shadow-lg z-10">
                         <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform duration-300" />
                       </div>
 

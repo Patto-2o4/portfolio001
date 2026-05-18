@@ -42,7 +42,7 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="section-padding bg-black border-y border-accent/20">
+    <section className="section-padding bg-background border-y border-accent/20">
       <div className="container">
         <AnimatedSection direction="up">
           <h2 className="section-title">What Clients Are Saying</h2>
@@ -60,7 +60,7 @@ export default function Testimonials() {
                   ))}
                 </div>
 
-                <p className="text-gray-300 text-lg mb-6 leading-relaxed italic">
+                <p className="text-muted-foreground text-lg mb-6 leading-relaxed italic">
                   "{testimonial.content}"
                 </p>
 
@@ -72,7 +72,7 @@ export default function Testimonials() {
                   </div>
 
                   <div>
-                    <h4 className="font-bold text-white group-hover:text-accent transition-colors">
+                    <h4 className="font-bold text-foreground group-hover:text-accent transition-colors">
                       {testimonial.name}
                     </h4>
                     <p className="text-sm text-gray-500">{testimonial.position}</p>
@@ -87,15 +87,15 @@ export default function Testimonials() {
           <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center p-8 rounded-2xl border border-accent/20 hover:border-accent transition-colors">
               <div className="text-5xl font-bold text-accent mb-2">4.9/5</div>
-              <p className="text-gray-400">Average Rating</p>
+              <p className="text-muted-foreground">Average Rating</p>
             </div>
             <div className="text-center p-8 rounded-2xl border border-accent/20 hover:border-accent transition-colors">
               <div className="text-5xl font-bold text-accent mb-2">30+</div>
-              <p className="text-gray-400">Happy Clients</p>
+              <p className="text-muted-foreground">Happy Clients</p>
             </div>
             <div className="text-center p-8 rounded-2xl border border-accent/20 hover:border-accent transition-colors">
               <div className="text-5xl font-bold text-accent mb-2">100%</div>
-              <p className="text-gray-400">Satisfaction Rate</p>
+              <p className="text-muted-foreground">Satisfaction Rate</p>
             </div>
           </div>
         </AnimatedSection>

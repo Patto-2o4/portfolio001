@@ -13,7 +13,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="section-padding bg-black relative overflow-hidden">
+    <section id="about" className="section-padding bg-background relative overflow-hidden">
       {decorativeIcons.map((item) => (
         <div
           key={item.id}
@@ -43,7 +43,7 @@ export default function About() {
 
                 <div className="text-center z-10">
                   <div className="text-7xl mb-4">P</div>
-                  <p className="text-gray-400 text-sm">Your Profile Photo</p>
+                  <p className="text-muted-foreground text-sm">Your Profile Photo</p>
                 </div>
               </div>
             </div>
@@ -51,20 +51,20 @@ export default function About() {
 
           <AnimatedSection direction="right">
             <div>
-              <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+              <h2 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
                 {t("aboutHeading")}
               </h2>
 
-              <p className="text-lg text-gray-400 mb-6 leading-relaxed">
+              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
                 {t("aboutText1")}
               </p>
 
-              <p className="text-lg text-gray-400 mb-8 leading-relaxed">
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                 {t("aboutText2")}
               </p>
 
               <div className="mb-8">
-                <h3 className="text-xl font-bold text-white mb-4">My Expertise</h3>
+                <h3 className="text-xl font-bold text-foreground mb-4">My Expertise</h3>
                 <div className="grid grid-cols-2 gap-4">
                   {[
                     "UX/UI Design",
@@ -76,7 +76,7 @@ export default function About() {
                   ].map((skill, index) => (
                     <div
                       key={index}
-                      className="px-4 py-3 rounded-lg border border-[#6366F1]/30 hover:border-[#6366F1] hover:bg-[#6366F1]/10 transition-all duration-300 text-gray-300 hover:text-[#6366F1]"
+                      className="px-4 py-3 rounded-lg border border-[#6366F1]/30 hover:border-[#6366F1] hover:bg-[#6366F1]/10 transition-all duration-300 text-muted-foreground hover:text-[#6366F1]"
                     >
                       + {skill}
                     </div>

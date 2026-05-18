@@ -38,7 +38,7 @@ export default function Services() {
   ];
 
   return (
-    <section className="section-padding bg-black border-y border-accent/20">
+    <section className="section-padding bg-background border-y border-accent/20">
       <div className="container">
         <AnimatedSection direction="up">
           <h2 className="section-title">What I Offer</h2>
@@ -61,11 +61,11 @@ export default function Services() {
                     {service.icon}
                   </div>
 
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-accent transition-colors">
+                  <h3 className="text-2xl font-bold text-foreground mb-4 group-hover:text-accent transition-colors">
                     {service.title}
                   </h3>
 
-                  <p className="text-gray-400 leading-relaxed mb-6">
+                  <p className="text-muted-foreground leading-relaxed mb-6">
                     {service.description}
                   </p>
 
@@ -84,8 +84,8 @@ export default function Services() {
 
         <AnimatedSection delay={0.4} direction="up">
           <div className="mt-20 p-8 rounded-2xl border border-accent/20 bg-accent/5">
-            <h3 className="text-2xl font-bold text-white mb-4">Custom Solutions</h3>
-            <p className="text-gray-400 mb-6">
+            <h3 className="text-2xl font-bold text-foreground mb-4">Custom Solutions</h3>
+            <p className="text-muted-foreground mb-6">
               Don't see the service you need? I provide custom solutions to meet specific project requirements.
               Contact me to discuss your ideas.
             </p>

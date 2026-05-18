@@ -89,19 +89,19 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="section-padding bg-black relative overflow-hidden">
+    <section id="contact" className="section-padding bg-background relative overflow-hidden">
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#6366F1] rounded-full blur-3xl"></div>
       </div>
 
       <div className="container relative z-10">
         <AnimatedSection direction="up">
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-4 text-center">
+          <h2 className="text-5xl md:text-6xl font-bold text-foreground mb-4 text-center">
             LET'S GET IN
             <br />
             <span className="gradient-text">TOUCH</span>
           </h2>
-          <p className="text-center text-gray-400 text-lg mb-16 max-w-2xl mx-auto">
+          <p className="text-center text-muted-foreground text-lg mb-16 max-w-2xl mx-auto">
             Have a project in mind? Let's create something amazing together.
           </p>
         </AnimatedSection>
@@ -113,7 +113,7 @@ export default function Contact() {
                 <p className="text-gray-500 text-sm uppercase tracking-widest mb-2">Email</p>
                 <a
                   href="mailto:Patto2k4@gmail.com"
-                  className="text-3xl font-bold text-white hover:text-[#6366F1] transition-colors"
+                  className="text-3xl font-bold text-foreground hover:text-[#6366F1] transition-colors"
                 >
                   Patto2k4@gmail.com
                 </a>
@@ -123,7 +123,7 @@ export default function Contact() {
                 <p className="text-gray-500 text-sm uppercase tracking-widest mb-2">Phone</p>
                 <a
                   href="tel:+1234567890"
-                  className="text-3xl font-bold text-white hover:text-[#6366F1] transition-colors"
+                  className="text-3xl font-bold text-foreground hover:text-[#6366F1] transition-colors"
                 >
                   +1 (234) 567-890
                 </a>
@@ -131,7 +131,7 @@ export default function Contact() {
 
               <div className="mb-12">
                 <p className="text-gray-500 text-sm uppercase tracking-widest mb-2">Location</p>
-                <p className="text-xl text-gray-300">San Francisco, CA</p>
+                <p className="text-xl text-muted-foreground">San Francisco, CA</p>
               </div>
 
               <div className="mb-12">
@@ -141,7 +141,7 @@ export default function Contact() {
                     href="https://www.facebook.com/pham.tuan.anh.29784"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-full border border-[#6366F1] flex items-center justify-center text-[#6366F1] hover:bg-[#6366F1] hover:text-white transition-all duration-300 text-sm font-semibold"
+                    className="w-12 h-12 rounded-full border border-[#6366F1] flex items-center justify-center text-[#6366F1] hover:bg-[#6366F1] hover:text-foreground transition-all duration-300 text-sm font-semibold"
                     title="Facebook"
                   >
                     FB
@@ -150,7 +150,7 @@ export default function Contact() {
                     href="https://www.instagram.com/patto_2o4/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-full border border-[#6366F1] flex items-center justify-center text-[#6366F1] hover:bg-[#6366F1] hover:text-white transition-all duration-300 text-sm font-semibold"
+                    className="w-12 h-12 rounded-full border border-[#6366F1] flex items-center justify-center text-[#6366F1] hover:bg-[#6366F1] hover:text-foreground transition-all duration-300 text-sm font-semibold"
                     title="Instagram"
                   >
                     IG
@@ -159,7 +159,7 @@ export default function Contact() {
                     href="https://www.behance.net/lnguyn106"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-full border border-[#6366F1] flex items-center justify-center text-[#6366F1] hover:bg-[#6366F1] hover:text-white transition-all duration-300 text-sm font-semibold"
+                    className="w-12 h-12 rounded-full border border-[#6366F1] flex items-center justify-center text-[#6366F1] hover:bg-[#6366F1] hover:text-foreground transition-all duration-300 text-sm font-semibold"
                     title="Behance"
                   >
                     BE
@@ -168,7 +168,7 @@ export default function Contact() {
                     href="https://www.tiktok.com/@tuananhcutehehe?lang=vi-VN"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-full border border-[#6366F1] flex items-center justify-center text-[#6366F1] hover:bg-[#6366F1] hover:text-white transition-all duration-300 text-sm font-semibold"
+                    className="w-12 h-12 rounded-full border border-[#6366F1] flex items-center justify-center text-[#6366F1] hover:bg-[#6366F1] hover:text-foreground transition-all duration-300 text-sm font-semibold"
                     title="Tiktok"
                   >
                     TT
@@ -184,7 +184,7 @@ export default function Contact() {
             <div id="contact-card" className="p-8 rounded-2xl border border-[#6366F1]/20 bg-[#6366F1]/5 transition-all duration-500 ease-out">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-white mb-2">
+                  <label htmlFor="name" className="block text-sm font-semibold text-foreground mb-2">
                     Your Name
                   </label>
                   <input
@@ -194,12 +194,12 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="John Doe"
-                    className="w-full px-4 py-3 rounded-lg bg-[#1A1A1A] border border-[#6366F1]/20 text-white placeholder-gray-500 focus:border-[#6366F1] focus:ring-2 focus:ring-[#6366F1]/30 focus:outline-none transition-all duration-300"
+                    className="w-full px-4 py-3 rounded-lg bg-[#1A1A1A] border border-[#6366F1]/20 text-foreground placeholder-gray-500 focus:border-[#6366F1] focus:ring-2 focus:ring-[#6366F1]/30 focus:outline-none transition-all duration-300"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-white mb-2">
+                  <label htmlFor="email" className="block text-sm font-semibold text-foreground mb-2">
                     Your Email
                   </label>
                   <input
@@ -209,12 +209,12 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="john@example.com"
-                    className="w-full px-4 py-3 rounded-lg bg-[#1A1A1A] border border-[#6366F1]/20 text-white placeholder-gray-500 focus:border-[#6366F1] focus:ring-2 focus:ring-[#6366F1]/30 focus:outline-none transition-all duration-300"
+                    className="w-full px-4 py-3 rounded-lg bg-[#1A1A1A] border border-[#6366F1]/20 text-foreground placeholder-gray-500 focus:border-[#6366F1] focus:ring-2 focus:ring-[#6366F1]/30 focus:outline-none transition-all duration-300"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-white mb-2">
+                  <label htmlFor="message" className="block text-sm font-semibold text-foreground mb-2">
                     Message
                   </label>
                   <textarea
@@ -224,7 +224,7 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="Tell me about your project..."
                     rows={5}
-                    className="w-full px-4 py-3 rounded-lg bg-[#1A1A1A] border border-[#6366F1]/20 text-white placeholder-gray-500 focus:border-[#6366F1] focus:ring-2 focus:ring-[#6366F1]/30 focus:outline-none transition-all duration-300 resize-none"
+                    className="w-full px-4 py-3 rounded-lg bg-[#1A1A1A] border border-[#6366F1]/20 text-foreground placeholder-gray-500 focus:border-[#6366F1] focus:ring-2 focus:ring-[#6366F1]/30 focus:outline-none transition-all duration-300 resize-none"
                   ></textarea>
                 </div>
 
@@ -233,9 +233,9 @@ export default function Contact() {
                   disabled={isSubmitting || isSuccess}
                   className={`w-full flex items-center justify-center gap-2 py-4 rounded-xl font-bold uppercase tracking-wider text-sm transition-all duration-500 shadow-lg ${
                     isSuccess
-                      ? "bg-emerald-500 text-white hover:bg-emerald-600 shadow-[0_0_20px_rgba(16,185,129,0.4)] border border-emerald-400/30"
+                      ? "bg-emerald-500 text-foreground hover:bg-emerald-600 shadow-[0_0_20px_rgba(16,185,129,0.4)] border border-emerald-400/30"
                       : isSubmitting
-                      ? "bg-indigo-600/50 text-white/70 border border-indigo-500/20 cursor-not-allowed"
+                      ? "bg-indigo-600/50 text-foreground/70 border border-indigo-500/20 cursor-not-allowed"
                       : "btn-main"
                   }`}
                 >

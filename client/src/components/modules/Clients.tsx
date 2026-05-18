@@ -11,7 +11,7 @@ export default function Clients() {
   ];
 
   return (
-    <section id="clients" className="section-padding bg-black border-y border-accent/20">
+    <section id="clients" className="section-padding bg-background border-y border-accent/20">
       <div className="container">
         <h2 className="section-title">Trusted by Leading Brands</h2>
 
@@ -28,7 +28,7 @@ export default function Clients() {
                 <span className="text-4xl group-hover:scale-110 transition-transform duration-300">
                   {client.logo}
                 </span>
-                <span className="text-lg font-semibold text-gray-300 group-hover:text-accent transition-colors">
+                <span className="text-lg font-semibold text-muted-foreground group-hover:text-accent transition-colors">
                   {client.name}
                 </span>
               </div>
@@ -42,7 +42,7 @@ export default function Clients() {
                 <span className="text-4xl group-hover:scale-110 transition-transform duration-300">
                   {client.logo}
                 </span>
-                <span className="text-lg font-semibold text-gray-300 group-hover:text-accent transition-colors">
+                <span className="text-lg font-semibold text-muted-foreground group-hover:text-accent transition-colors">
                   {client.name}
                 </span>
               </div>
@@ -53,15 +53,15 @@ export default function Clients() {
         <div className="grid grid-cols-3 gap-8 mt-20">
           <div className="text-center">
             <div className="text-4xl font-bold text-accent mb-2">50+</div>
-            <p className="text-gray-400">Projects Completed</p>
+            <p className="text-muted-foreground">Projects Completed</p>
           </div>
           <div className="text-center">
             <div className="text-4xl font-bold text-accent mb-2">30+</div>
-            <p className="text-gray-400">Happy Clients</p>
+            <p className="text-muted-foreground">Happy Clients</p>
           </div>
           <div className="text-center">
             <div className="text-4xl font-bold text-accent mb-2">5+</div>
-            <p className="text-gray-400">Years Experience</p>
+            <p className="text-muted-foreground">Years Experience</p>
           </div>
         </div>
       </div>

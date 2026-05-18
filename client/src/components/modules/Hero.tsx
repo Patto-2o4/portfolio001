@@ -80,7 +80,7 @@ export default function Hero() {
         >
           {/* Main Headline */}
           <motion.h1
-            className="text-6xl md:text-7xl font-bold text-white mb-6 leading-tight uppercase"
+            className="text-6xl md:text-7xl font-bold text-foreground mb-6 leading-tight uppercase"
             variants={itemVariants}
           >
             {t("heroTitle")}
@@ -90,7 +90,7 @@ export default function Hero() {
 
           {/* Sub Headline */}
           <motion.p
-            className="text-xl md:text-2xl text-gray-400 mb-8 leading-relaxed"
+            className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed"
             variants={itemVariants}
           >
             {t("heroSubtitle")}
@@ -124,16 +124,16 @@ export default function Hero() {
             className="flex gap-6 mt-12"
             variants={itemVariants}
           >
-            <a href="https://www.facebook.com/pham.tuan.anh.29784" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-accent transition-colors text-sm">
+            <a href="https://www.facebook.com/pham.tuan.anh.29784" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors text-sm">
               Facebook
             </a>
-            <a href="https://www.instagram.com/patto_2o4/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-accent transition-colors text-sm">
+            <a href="https://www.instagram.com/patto_2o4/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors text-sm">
               Instagram
             </a>
-            <a href="https://www.behance.net/lnguyn106" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-accent transition-colors text-sm">
+            <a href="https://www.behance.net/lnguyn106" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors text-sm">
               Behance
             </a>
-            <a href="https://www.tiktok.com/@tuananhcutehehe?lang=vi-VN" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-accent transition-colors text-sm">
+            <a href="https://www.tiktok.com/@tuananhcutehehe?lang=vi-VN" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors text-sm">
               Tiktok
             </a>
           </motion.div>

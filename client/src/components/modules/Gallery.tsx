@@ -48,7 +48,7 @@ export default function Gallery() {
   ];
 
   return (
-    <section id="gallery" className="section-padding bg-black">
+    <section id="gallery" className="section-padding bg-background">
       <div className="container">
         <AnimatedSection direction="up">
           <h2 className="section-title">Featured Works</h2>
@@ -56,16 +56,16 @@ export default function Gallery() {
 
         <AnimatedSection delay={0.2} direction="up">
           <div className="flex justify-center gap-4 mb-16 flex-wrap">
-            <button className="px-6 py-2 rounded-full border border-[#6366F1] text-[#6366F1] font-semibold hover:bg-[#6366F1] hover:text-white transition-all duration-300">
+            <button className="px-6 py-2 rounded-full border border-[#6366F1] text-[#6366F1] font-semibold hover:bg-[#6366F1] hover:text-foreground transition-all duration-300">
               All
             </button>
-            <button className="px-6 py-2 rounded-full border border-gray-600 text-gray-400 font-semibold hover:border-[#6366F1] hover:text-[#6366F1] transition-all duration-300">
+            <button className="px-6 py-2 rounded-full border border-gray-600 text-muted-foreground font-semibold hover:border-[#6366F1] hover:text-[#6366F1] transition-all duration-300">
               3D Modeling
             </button>
-            <button className="px-6 py-2 rounded-full border border-gray-600 text-gray-400 font-semibold hover:border-accent hover:text-accent transition-all duration-300">
+            <button className="px-6 py-2 rounded-full border border-gray-600 text-muted-foreground font-semibold hover:border-accent hover:text-accent transition-all duration-300">
               Animation
             </button>
-            <button className="px-6 py-2 rounded-full border border-gray-600 text-gray-400 font-semibold hover:border-accent hover:text-accent transition-all duration-300">
+            <button className="px-6 py-2 rounded-full border border-gray-600 text-muted-foreground font-semibold hover:border-accent hover:text-accent transition-all duration-300">
               Design
             </button>
           </div>
@@ -90,11 +90,11 @@ export default function Gallery() {
                     {project.category}
                   </p>
 
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#6366F1] transition-colors">
+                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-[#6366F1] transition-colors">
                     {project.title}
                   </h3>
 
-                  <p className="text-gray-400 text-sm mb-4">
+                  <p className="text-muted-foreground text-sm mb-4">
                     {project.description}
                   </p>
 

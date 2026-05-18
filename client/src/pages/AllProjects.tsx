@@ -23,18 +23,18 @@ export default function AllProjects() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white pt-24 pb-20">
+    <div className="min-h-screen bg-background text-foreground pt-24 pb-20">
       <div className="container mx-auto px-6">
         <div className="mb-16">
           <AnimatedSection direction="down">
-            <Link href="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-8 group">
+            <Link href="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8 group">
               <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
               <span className="font-medium">Back to Home</span>
             </Link>
             <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500 uppercase">
               {t("projectsHeading")}
             </h1>
-            <p className="text-xl text-gray-400 max-w-2xl">
+            <p className="text-xl text-muted-foreground max-w-2xl">
               {t("allProjectsDesc")}
             </p>
           </AnimatedSection>
@@ -48,8 +48,8 @@ export default function AllProjects() {
               onClick={() => setFilter(cat)}
               className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
                 filter === cat 
-                  ? "bg-[#6366F1] text-white border border-[#6366F1]" 
-                  : "bg-transparent text-gray-400 border border-white/10 hover:border-[#6366F1]/50 hover:text-white"
+                  ? "bg-[#6366F1] text-foreground border border-[#6366F1]" 
+                  : "bg-transparent text-muted-foreground border border-white/10 hover:border-[#6366F1]/50 hover:text-foreground"
               }`}
             >
               {cat}
@@ -65,7 +65,7 @@ export default function AllProjects() {
               direction="up"
             >
               <Link href={`/projects/${project.id}`}>
-                <div className="group relative h-full flex flex-col bg-[#111111] border border-[#222] rounded-3xl overflow-hidden hover:border-[#6366F1]/50 transition-all duration-500 cursor-pointer">
+                <div className="group relative h-full flex flex-col bg-card border border-[#222] rounded-3xl overflow-hidden hover:border-[#6366F1]/50 transition-all duration-500 cursor-pointer">
                   {/* Thumbnail / Placeholder */}
                   <div className="relative h-64 bg-gradient-to-br from-[#181818] to-[#0A0A0A] flex items-center justify-center overflow-hidden">
                     <div className="absolute inset-0 bg-[#6366F1]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -77,7 +77,7 @@ export default function AllProjects() {
                     />
 
                     <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center border border-white/10 group-hover:bg-[#6366F1] group-hover:border-[#6366F1] transition-colors duration-300">
-                      <ArrowUpRight className="w-5 h-5 text-white" />
+                      <ArrowUpRight className="w-5 h-5 text-foreground" />
                     </div>
                   </div>
 
@@ -87,7 +87,7 @@ export default function AllProjects() {
                       <span className="text-xs font-bold text-[#6366F1] uppercase tracking-wider font-mono">
                         {project.number}
                       </span>
-                      <span className="text-xs px-3 py-1 rounded-full border border-white/10 text-gray-400">
+                      <span className="text-xs px-3 py-1 rounded-full border border-white/10 text-muted-foreground">
                         {project.category}
                       </span>
                     </div>
