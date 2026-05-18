@@ -133,23 +133,24 @@ export default function CustomCursor() {
       {/* Glowing high-intensity lavender core dot */}
       <div
         ref={dotElRef}
-        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-[#E9D5FF] shadow-[0_0_10px_#9917FF,0_0_3px_#FFF] pointer-events-none z-[99999] transition-opacity duration-300"
+        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-[#EDE9FE] shadow-[0_0_14px_4px_#9917FF,0_0_5px_2px_rgba(255,255,255,0.9)] pointer-events-none z-[99999] transition-opacity duration-300"
         style={{
           opacity: hoverType === "text" ? 0 : 1,
         }}
       />
-      {/* Elastic, shape-shifting outer ring - restored to classic purple/indigo */}
+      {/* Elastic, shape-shifting outer ring */}
       <div
         ref={ringElRef}
-        className="fixed top-0 left-0 border pointer-events-none z-[99998] flex items-center justify-center overflow-hidden transition-colors duration-300"
+        className="fixed top-0 left-0 pointer-events-none z-[99998] flex items-center justify-center overflow-hidden"
         style={{
-          borderColor: hoverType === "interactive" ? "rgba(99, 102, 241, 0.5)" : "rgba(153, 23, 255, 0.25)",
-          backgroundColor: hoverType === "interactive" ? "rgba(99, 102, 241, 0.08)" : hoverType === "card" ? "rgba(153, 23, 255, 0.08)" : "transparent",
-          boxShadow: hoverType === "interactive" 
-            ? "0 0 15px rgba(99, 102, 241, 0.15)" 
-            : hoverType === "card" 
-            ? "0 0 20px rgba(153, 23, 255, 0.15)" 
-            : "none",
+          border: hoverType === "interactive" ? "1.5px solid rgba(99, 102, 241, 0.85)" : "1.5px solid rgba(180, 80, 255, 0.55)",
+          backgroundColor: hoverType === "interactive" ? "rgba(99, 102, 241, 0.1)" : hoverType === "card" ? "rgba(153, 23, 255, 0.1)" : "transparent",
+          boxShadow: hoverType === "interactive"
+            ? "0 0 18px 3px rgba(99, 102, 241, 0.3), inset 0 0 8px rgba(99,102,241,0.1)"
+            : hoverType === "card"
+            ? "0 0 22px 4px rgba(153, 23, 255, 0.3), inset 0 0 10px rgba(153,23,255,0.1)"
+            : "0 0 10px 2px rgba(153, 23, 255, 0.18)",
+          transition: "border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease",
         }}
       >
         {hoverType === "card" && (
