@@ -54,7 +54,7 @@ export default function Hero() {
       <nav className="navbar">
         <div className="container flex items-center justify-between h-20">
           <motion.div
-            className="text-2xl font-bold text-white"
+            className="text-2xl font-black text-white tracking-wider"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
