@@ -1,5 +1,6 @@
 import AnimatedSection from "@/components/AnimatedSection";
 import AnimatedItem from "@/components/AnimatedItem";
+import { Box, PlaySquare, Image, MonitorPlay } from "lucide-react";
 
 export default function Services() {
   const services = [
@@ -9,7 +10,7 @@ export default function Services() {
       title: "3D Modeling",
       description:
         "Create detailed 3D models from concept to final product. Using professional tools like Blender, Maya, and Cinema 4D.",
-      icon: "M",
+      icon: <Box className="w-12 h-12" />,
     },
     {
       id: 2,
@@ -17,7 +18,7 @@ export default function Services() {
       title: "3D Animation",
       description:
         "Create dynamic animations to tell your brand story. From motion graphics to complex character animation.",
-      icon: "A",
+      icon: <PlaySquare className="w-12 h-12" />,
     },
     {
       id: 3,
@@ -25,7 +26,7 @@ export default function Services() {
       title: "Product Visualization",
       description:
         "Visualize products with high quality for e-commerce, marketing, and sales. Increase conversion rates.",
-      icon: "P",
+      icon: <Image className="w-12 h-12" />,
     },
     {
       id: 4,
@@ -33,7 +34,7 @@ export default function Services() {
       title: "VR/AR Development",
       description:
         "Develop immersive VR and AR experiences for interactive engagement. The future of technology, today.",
-      icon: "V",
+      icon: <MonitorPlay className="w-12 h-12" />,
     },
   ];
 

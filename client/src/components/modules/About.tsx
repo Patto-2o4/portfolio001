@@ -1,15 +1,16 @@
 import AnimatedSection from "@/components/AnimatedSection";
 import { useLanguage } from "@/contexts/LanguageContext";
 import CtaButton from "@/components/ui/CtaButton";
+import { Lightbulb, Layers, BrainCircuit, Box, Workflow } from "lucide-react";
 
 export default function About() {
   const { t } = useLanguage();
   const decorativeIcons = [
-    { id: 1, icon: "H", top: "10%", left: "10%", delay: "0s" },
-    { id: 2, icon: "S", top: "20%", right: "15%", delay: "0.5s" },
-    { id: 3, icon: "F", top: "60%", left: "5%", delay: "1s" },
-    { id: 4, icon: "D", top: "70%", right: "10%", delay: "0.3s" },
-    { id: 5, icon: "A", top: "40%", right: "5%", delay: "0.7s" },
+    { id: 1, icon: <Lightbulb />, top: "10%", left: "10%", delay: "0s" },
+    { id: 2, icon: <Layers />, top: "20%", right: "15%", delay: "0.5s" },
+    { id: 3, icon: <BrainCircuit />, top: "60%", left: "5%", delay: "1s" },
+    { id: 4, icon: <Box />, top: "70%", right: "10%", delay: "0.3s" },
+    { id: 5, icon: <Workflow />, top: "40%", right: "5%", delay: "0.7s" },
   ];
 
   return (
@@ -36,14 +37,17 @@ export default function About() {
             <div className="relative h-96 lg:h-[500px]">
               <div className="absolute inset-0 bg-gradient-to-br from-[#6366F1]/20 to-transparent rounded-3xl blur-3xl"></div>
 
-              <div className="relative w-full h-full bg-gradient-to-br from-[#1A1A1A] to-[#0A0A0A] rounded-3xl border border-[#6366F1]/20 flex items-center justify-center overflow-hidden group">
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div className="relative w-full h-full bg-card rounded-3xl border border-[#6366F1]/20 flex items-center justify-center overflow-hidden group shadow-2xl">
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none">
                   <div className="absolute inset-0 bg-gradient-to-r from-[#6366F1]/0 via-[#6366F1]/10 to-[#6366F1]/0 animate-pulse"></div>
                 </div>
 
-                <div className="text-center z-10">
-                  <div className="text-7xl mb-4">P</div>
-                  <p className="text-muted-foreground text-sm">Your Profile Photo</p>
+                <div className="relative z-0 w-full h-full">
+                  <img 
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop" 
+                    alt="Patto Profile" 
+                    className="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700"
+                  />
                 </div>
               </div>
             </div>

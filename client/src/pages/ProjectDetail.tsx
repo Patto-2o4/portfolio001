@@ -30,10 +30,10 @@ export default function ProjectDetail() {
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-6 text-center">
+      <div className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center p-6 text-center">
         <Icons.AlertTriangle className="w-16 h-16 text-red-500 mb-4 animate-bounce" />
         <h1 className="text-3xl font-black mb-4">Project Not Found</h1>
-        <p className="text-gray-400 mb-8 max-w-md">The project you are looking for does not exist or has been removed.</p>
+        <p className="text-muted-foreground mb-8 max-w-md">The project you are looking for does not exist or has been removed.</p>
         <Link href="/" className="btn-primary">
           Back to Home
         </Link>
@@ -46,7 +46,7 @@ export default function ProjectDetail() {
   const nextProject = projects.find((p) => p.id === nextProjectId);
 
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-[#6366F1]/30 relative overflow-hidden">
+    <div className="min-h-screen bg-background text-foreground selection:bg-[#6366F1]/30 relative overflow-hidden">
       {/* Background ambient lighting effects with parallax motion */}
       <motion.div 
         style={{ y: glow1Y }}
@@ -64,7 +64,7 @@ export default function ProjectDetail() {
         <div className="mb-12 flex justify-between items-center">
           <Link
             href="/#projects"
-            className="inline-flex items-center gap-2.5 text-gray-400 hover:text-white transition-colors group px-4 py-2 rounded-xl bg-white/[0.02] border border-white/5 hover:border-[#6366F1]/30"
+            className="inline-flex items-center gap-2.5 text-muted-foreground hover:text-foreground transition-colors group px-4 py-2 rounded-xl bg-card border border-border hover:border-[#6366F1]/30"
           >
             <Icons.ArrowLeft className="w-4 h-4 group-hover:-translate-x-1.5 transition-transform duration-300" />
             <span className="text-sm font-medium">Back to Portfolio</span>
@@ -80,7 +80,7 @@ export default function ProjectDetail() {
           {/* Huge Decorative Project Number with Parallax scrolling */}
           <motion.div 
             style={{ y: numberY }}
-            className="absolute -right-6 -top-12 text-[10rem] md:text-[18rem] font-black text-white/[0.015] leading-none pointer-events-none font-mono"
+            className="absolute -right-6 -top-12 text-[10rem] md:text-[18rem] font-black text-foreground/[0.03] leading-none pointer-events-none font-mono"
           >
             {project.number}
           </motion.div>
@@ -94,32 +94,32 @@ export default function ProjectDetail() {
               {project.category}
             </span>
 
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white tracking-tight mb-8 leading-none">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-foreground tracking-tight mb-8 leading-none">
               {project.title}
             </h1>
           </motion.div>
 
           {/* Glassmorphic Metadata Grid */}
-          <div className="relative grid grid-cols-2 md:grid-cols-4 gap-6 p-6 md:p-8 rounded-3xl bg-[#121212]/40 border border-white/10 backdrop-blur-md shadow-2xl overflow-hidden mt-10">
+          <div className="relative grid grid-cols-2 md:grid-cols-4 gap-6 p-6 md:p-8 rounded-3xl bg-card/40 border border-border backdrop-blur-md shadow-2xl overflow-hidden mt-10">
             <div className="absolute inset-0 bg-gradient-to-r from-[#6366F1]/5 to-[#9917FF]/5 pointer-events-none" />
             
             <div>
-              <p className="text-xs text-gray-500 font-bold uppercase tracking-wider mb-2">Client</p>
-              <p className="text-base font-semibold text-white/90">{project.client}</p>
+              <p className="text-xs text-muted-foreground font-bold uppercase tracking-wider mb-2">Client</p>
+              <p className="text-base font-semibold text-foreground/90">{project.client}</p>
             </div>
 
             <div>
-              <p className="text-xs text-gray-500 font-bold uppercase tracking-wider mb-2">Release Year</p>
-              <p className="text-base font-semibold text-white/90">{project.year}</p>
+              <p className="text-xs text-muted-foreground font-bold uppercase tracking-wider mb-2">Release Year</p>
+              <p className="text-base font-semibold text-foreground/90">{project.year}</p>
             </div>
 
             <div>
-              <p className="text-xs text-gray-500 font-bold uppercase tracking-wider mb-2">Production Role</p>
-              <p className="text-base font-semibold text-white/90">{project.category}</p>
+              <p className="text-xs text-muted-foreground font-bold uppercase tracking-wider mb-2">Production Role</p>
+              <p className="text-base font-semibold text-foreground/90">{project.category}</p>
             </div>
 
             <div>
-              <p className="text-xs text-gray-500 font-bold uppercase tracking-wider mb-2">CGI Pipeline Tools</p>
+              <p className="text-xs text-muted-foreground font-bold uppercase tracking-wider mb-2">CGI Pipeline Tools</p>
               <div className="flex flex-wrap gap-1.5 mt-1">
                 {project.tools.map((tool) => (
                   <span
@@ -136,7 +136,7 @@ export default function ProjectDetail() {
 
         {/* Detailed Description */}
         <section className="mb-16">
-          <div className="text-xl md:text-2xl text-gray-300 leading-relaxed font-light max-w-4xl">
+          <div className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-light max-w-4xl">
             {project.fullDescription}
           </div>
         </section>
@@ -149,16 +149,16 @@ export default function ProjectDetail() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="p-8 rounded-3xl bg-[#120B10]/60 border border-red-500/10 hover:border-red-500/20 transition-all duration-300 shadow-2xl relative overflow-hidden group"
+            className="p-8 rounded-3xl bg-card border border-red-500/10 hover:border-red-500/20 transition-all duration-300 shadow-2xl relative overflow-hidden group"
           >
             <div className="absolute top-0 right-0 w-24 h-24 bg-red-500/5 rounded-full blur-2xl group-hover:bg-red-500/10 transition-colors pointer-events-none" />
             <div className="flex items-center gap-3.5 mb-5">
-              <div className="p-3 rounded-xl bg-red-500/10 text-red-400">
+              <div className="p-3 rounded-xl bg-red-500/10 text-red-500">
                 <Icons.AlertTriangle className="w-5 h-5" />
               </div>
-              <h3 className="text-2xl font-bold text-white">The Challenge</h3>
+              <h3 className="text-2xl font-bold text-foreground">The Challenge</h3>
             </div>
-            <p className="text-gray-400 leading-relaxed text-base font-normal">
+            <p className="text-muted-foreground leading-relaxed text-base font-normal">
               {project.challenge}
             </p>
           </motion.div>
@@ -169,30 +169,30 @@ export default function ProjectDetail() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
-            className="p-8 rounded-3xl bg-[#090C1A]/60 border border-indigo-500/10 hover:border-indigo-500/20 transition-all duration-300 shadow-2xl relative overflow-hidden group"
+            className="p-8 rounded-3xl bg-card border border-indigo-500/10 hover:border-indigo-500/20 transition-all duration-300 shadow-2xl relative overflow-hidden group"
           >
             <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-500/5 rounded-full blur-2xl group-hover:bg-indigo-500/10 transition-colors pointer-events-none" />
             <div className="flex items-center gap-3.5 mb-5">
-              <div className="p-3 rounded-xl bg-[#6366F1]/10 text-indigo-400">
+              <div className="p-3 rounded-xl bg-[#6366F1]/10 text-primary">
                 <Icons.CheckCircle className="w-5 h-5" />
               </div>
-              <h3 className="text-2xl font-bold text-white">The Solution</h3>
+              <h3 className="text-2xl font-bold text-foreground">The Solution</h3>
             </div>
-            <p className="text-gray-400 leading-relaxed text-base font-normal">
+            <p className="text-muted-foreground leading-relaxed text-base font-normal">
               {project.solution}
             </p>
           </motion.div>
         </section>
 
         {/* Business Results Banner */}
-        <section className="p-8 md:p-12 rounded-3xl bg-gradient-to-br from-[#100C24] via-[#080612] to-black border border-[#6366F1]/20 shadow-3xl text-center relative overflow-hidden mb-20 group">
+        <section className="p-8 md:p-12 rounded-3xl bg-gradient-to-br from-card via-card to-background border border-border shadow-2xl text-center relative overflow-hidden mb-20 group">
           <div className="absolute inset-0 bg-[#6366F1]/5 blur-3xl -z-10 group-hover:bg-[#6366F1]/10 transition-colors duration-500" />
           <div className="absolute -top-12 -left-12 w-48 h-48 bg-[#9917FF]/10 rounded-full blur-3xl pointer-events-none" />
           
           <span className="inline-block text-xs font-bold text-[#6366F1] uppercase tracking-widest mb-4">
             Key Outcomes & Impact
           </span>
-          <p className="text-2xl md:text-3xl text-white font-extrabold leading-relaxed max-w-3xl mx-auto italic font-serif">
+          <p className="text-2xl md:text-3xl text-foreground font-extrabold leading-relaxed max-w-3xl mx-auto italic font-serif">
             "{project.results}"
           </p>
         </section>
@@ -200,10 +200,10 @@ export default function ProjectDetail() {
         {/* 3D Production Pipeline Pipeline */}
         <section className="mb-20">
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-extrabold text-white tracking-tight mb-3">
+            <h3 className="text-3xl font-extrabold text-foreground tracking-tight mb-3">
               3D Production Pipeline
             </h3>
-            <p className="text-gray-400 max-w-lg mx-auto">
+            <p className="text-muted-foreground max-w-lg mx-auto">
               Our systematic approach to engineering, animating, and presenting state-of-the-art 3D assets.
             </p>
           </div>
@@ -234,20 +234,20 @@ export default function ProjectDetail() {
                     hidden: { opacity: 0, y: 30 },
                     show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 15 } }
                   }}
-                  className="p-6 rounded-2xl bg-[#0D0D0D]/60 border border-white/5 hover:border-[#6366F1]/30 transition-all hover:-translate-y-1 duration-300 relative group"
+                  className="p-6 rounded-2xl bg-card border border-border hover:border-[#6366F1]/30 transition-all hover:-translate-y-1 duration-300 relative group"
                 >
-                  <span className="text-xs text-gray-500 font-mono font-bold mb-3 tracking-widest uppercase block">
+                  <span className="text-xs text-muted-foreground font-mono font-bold mb-3 tracking-widest uppercase block">
                     {step.stage}
                   </span>
                   
-                  <div className="p-3 rounded-xl bg-[#6366F1]/5 text-[#6366F1] w-fit mb-5 group-hover:bg-[#6366F1]/15 transition-colors border border-[#6366F1]/10">
+                  <div className="p-3 rounded-xl bg-[#6366F1]/5 text-primary w-fit mb-5 group-hover:bg-[#6366F1]/15 transition-colors border border-[#6366F1]/10">
                     <DynamicIcon className="w-5 h-5" />
                   </div>
 
-                  <h4 className="text-lg font-bold text-white mb-2 group-hover:text-[#6366F1] transition-colors">
+                  <h4 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                     {step.title}
                   </h4>
-                  <p className="text-sm text-gray-400 leading-relaxed font-normal">
+                  <p className="text-sm text-muted-foreground leading-relaxed font-normal">
                     {step.description}
                   </p>
                 </motion.div>
@@ -257,21 +257,21 @@ export default function ProjectDetail() {
         </section>
 
         {/* Technical Specifications */}
-        <section className="p-8 rounded-3xl bg-[#080808]/80 border border-white/5 relative overflow-hidden mb-20">
-          <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4">
-            <Icons.Sliders className="w-5 h-5 text-[#9917FF]" />
-            <h4 className="text-xl font-bold text-white tracking-wide">
+        <section className="p-8 rounded-3xl bg-card border border-border relative overflow-hidden mb-20">
+          <div className="flex items-center gap-3 mb-6 border-b border-border pb-4">
+            <Icons.Sliders className="w-5 h-5 text-primary" />
+            <h4 className="text-xl font-bold text-foreground tracking-wide">
               Technical Specifications (CGI Asset Engine)
             </h4>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             {Object.entries(project.technicalSpecs).map(([key, val]) => (
-              <div key={key} className="p-4 rounded-2xl bg-white/[0.01] border border-white/5">
-                <p className="text-xs text-gray-500 uppercase tracking-wider mb-2 font-mono font-semibold">
+              <div key={key} className="p-4 rounded-2xl bg-background border border-border">
+                <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2 font-mono font-semibold">
                   {key.replace(/([A-Z])/g, " $1").trim()}
                 </p>
-                <p className="text-base font-semibold text-gray-300">
+                <p className="text-base font-semibold text-foreground">
                   {val}
                 </p>
               </div>

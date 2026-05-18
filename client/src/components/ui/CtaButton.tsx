@@ -21,8 +21,8 @@ export default function CtaButton({ variant = "main", href, onClick, children, c
   if (href) {
     if (href.startsWith("/") && !href.startsWith("/#")) {
       return (
-        <Link href={href} className={finalClass}>
-          {children}
+        <Link href={href}>
+          <a className={finalClass}>{children}</a>
         </Link>
       );
     }

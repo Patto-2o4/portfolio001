@@ -58,20 +58,20 @@ export default function Projects() {
                   </div>
 
                   <CtaButton
-                    href={`/projects`}
+                    href={`/projects/${project.id}`}
                     variant="sec"
                     className="inline-flex items-center gap-2"
                   >
-                    <span>View All Projects</span>
+                    <span>View Case Study</span>
                     <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
                   </CtaButton>
                 </div>
 
                 {/* 3D Mockup Visual block */}
                 <div className={`${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                  <Link href={`/projects`}>
+                  <Link href={`/projects/${project.id}`}>
                     <div
-                      className="relative h-96 lg:h-[500px] rounded-3xl overflow-hidden border border-[#6366F1]/20 group cursor-pointer bg-gradient-to-br from-[#121212] to-[#050505] hover:border-[#6366F1]/50 transition-all duration-500 shadow-2xl"
+                      className="relative h-96 lg:h-[500px] rounded-3xl overflow-hidden border border-[#6366F1]/20 group cursor-pointer bg-card hover:border-[#6366F1]/50 transition-all duration-500 shadow-2xl"
                     >
                       <div className="absolute inset-0 bg-[#6366F1]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
@@ -103,8 +103,10 @@ export default function Projects() {
         {/* Nút xem tất cả dự án (Lava Lamp) */}
         <AnimatedSection direction="up" delay={0.4}>
           <div className="mt-20 flex justify-center">
-            <Link href="/projects" className="btn-main">
-              <span>{t("viewAllProjects")}</span>
+            <Link href="/projects">
+              <a className="btn-main">
+                <span>{t("viewAllProjects")}</span>
+              </a>
             </Link>
           </div>
         </AnimatedSection>
