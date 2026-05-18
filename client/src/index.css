@@ -80,6 +80,13 @@
   }
 }
 
+@utility contact-card-highlight {
+  border-color: #9917FF !important;
+  box-shadow: 0 0 50px 0 rgba(153, 23, 255, 0.8) !important;
+  transform: scale(1.03) !important;
+  background-color: rgba(153, 23, 255, 0.12) !important;
+}
+
 /* Import Google Fonts cho Typography hiện đại */
 
 @custom-variant dark (&:is(.dark *));

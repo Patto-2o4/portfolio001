@@ -24,6 +24,24 @@ const SPLINE_URL = "https://prod.spline.design/wgI90cJyjVIqgKwS/scene";
 export default function Hero() {
   const [splineTrigger, setSplineTrigger] = useState<string>("");
 
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const card = document.getElementById("contact-card");
+    if (card) {
+      card.scrollIntoView({ behavior: "smooth", block: "center" });
+      
+      // Ignite quầng sáng tím 180px lập tức
+      card.classList.add("contact-card-highlight");
+      
+      // Gỡ bỏ sau 600ms
+      setTimeout(() => {
+        card.classList.remove("contact-card-highlight");
+      }, 600);
+    } else {
+      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   // Animation variants cho text
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -89,7 +107,7 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <a href="#contact" className="btn-main hidden md:inline-flex group">
+            <a href="#contact" onClick={handleContactClick} className="btn-main hidden md:inline-flex group">
               <Sparkles className="w-4 h-4 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-125" />
               Get In Touch
             </a>
@@ -139,7 +157,7 @@ export default function Hero() {
             className="flex gap-6 flex-wrap"
             variants={itemVariants}
           >
-            <a href="mailto:Patto2k4@gmail.com" className="btn-main group">
+            <a href="#contact" onClick={handleContactClick} className="btn-main group">
               <MessageSquare className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-110" />
               CONTACT ME
             </a>

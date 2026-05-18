@@ -174,7 +174,7 @@ export default function Contact() {
           </AnimatedSection>
 
           <AnimatedSection direction="right">
-            <div className="p-8 rounded-2xl border border-[#6366F1]/20 bg-[#6366F1]/5">
+            <div id="contact-card" className="p-8 rounded-2xl border border-[#6366F1]/20 bg-[#6366F1]/5 transition-all duration-500 ease-out">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-semibold text-white mb-2">
