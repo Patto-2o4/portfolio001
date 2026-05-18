@@ -81,9 +81,12 @@
   font-size: 0.95rem;
   color: #FFFFFF;
 
-  /* === NỀN DARK PILL (như trong ảnh tham khảo) ===
-     Nền tối gần đen để blob lava nổi bật                */
-  background: #08000f;
+  /* === NỀN DARK PILL ===
+     background: transparent để blob z-index:-1 hiển thị từ phía sau text.
+     isolation: isolate tạo stacking context riêng: blob z-index:-1 sẽ nằm
+     SAU content nhưng VẪN TRONG button (không thoát ra ngoài).             */
+  background: transparent;
+  isolation: isolate;
   border: 1.5px solid rgba(153, 23, 255, 0.45);
   border-radius: 9999px;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -110,12 +113,12 @@
       rgba(167, 139, 250, 0.95) 0%,   /* Lavender sáng ở tâm */
       rgba(153, 23, 255, 0.85) 35%,   /* Tím neon giữa */
       rgba(109, 40, 217, 0.6) 65%,    /* Indigo đậm hơn */
-      transparent 80%
+      #08000f 85%                      /* Đen tối ở rìa = nền dark pill */
     );
     filter: blur(18px);    /* Blur cao = blob mờ ảo, giảm để nét hơn */
     animation: btn-lava-blob-1 5s ease-in-out infinite;
     pointer-events: none;
-    z-index: 1;
+    z-index: -1; /* ← -1: nằm SAU text trong isolated stacking context */
   }
 
   /* === BLOB 2 (::after) - Blob phụ offset ===
@@ -138,7 +141,7 @@
     filter: blur(14px);    /* Blur nhẹ hơn blob 1 để tạo độ sâu */
     animation: btn-lava-blob-2 3.5s ease-in-out infinite;
     pointer-events: none;
-    z-index: 1;
+    z-index: -1; /* ← -1: nằm SAU text trong isolated stacking context */
   }
 
   /* === NỘI DUNG (text, icon) ===
