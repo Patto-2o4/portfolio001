@@ -117,7 +117,7 @@ export default function Footer() {
         <AnimatedSection direction="up" delay={0.2}>
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <p className="text-gray-500 text-sm">
-              Copyright &copy; {currentYear} Pham Tuan Anh. All rights reserved.
+              Copyright &copy; {currentYear} Patto. All rights reserved.
             </p>
 
             <div className="flex gap-6 text-sm">

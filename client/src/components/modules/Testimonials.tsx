@@ -10,7 +10,7 @@ export default function Testimonials() {
       avatar: "S",
       rating: 5,
       content:
-        "Tuan Anh's work is exceptional. The 3D models are incredibly detailed and the animations are smooth and professional. Highly recommended!",
+        "Patto's work is exceptional. The 3D models are incredibly detailed and the animations are smooth and professional. Highly recommended!",
     },
     {
       id: 2,
@@ -19,7 +19,7 @@ export default function Testimonials() {
       avatar: "M",
       rating: 5,
       content:
-        "Working with Tuan Anh transformed our product visualization. The quality and attention to detail exceeded our expectations. A true professional.",
+        "Working with Patto transformed our product visualization. The quality and attention to detail exceeded our expectations. A true professional.",
     },
     {
       id: 3,
@@ -28,7 +28,7 @@ export default function Testimonials() {
       avatar: "E",
       rating: 5,
       content:
-        "The 3D product renders increased our conversion rate by 40%. Tuan Anh understood our vision perfectly and delivered beyond expectations.",
+        "The 3D product renders increased our conversion rate by 40%. Patto understood our vision perfectly and delivered beyond expectations.",
     },
     {
       id: 4,
@@ -37,7 +37,7 @@ export default function Testimonials() {
       avatar: "J",
       rating: 5,
       content:
-        "Tuan Anh created stunning architectural animations that helped us win the project. The quality was outstanding and the process was smooth.",
+        "Patto created stunning architectural animations that helped us win the project. The quality was outstanding and the process was smooth.",
     },
   ];
 

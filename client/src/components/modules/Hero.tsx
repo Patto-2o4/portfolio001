@@ -112,7 +112,7 @@ export default function Hero() {
           >
             HI, I'M
             <br />
-            <span className="gradient-text">TUAN ANH</span>
+            <span className="gradient-text">PATTO</span>
           </motion.h1>
 
           {/* Sub Headline */}
