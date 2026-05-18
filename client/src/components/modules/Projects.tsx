@@ -1,6 +1,7 @@
 import AnimatedSection from "@/components/AnimatedSection";
 import { Link } from "wouter";
 import { projects } from "@/data/projects";
+import { ArrowUpRight } from "lucide-react";
 
 /**
  * MODULE: Projects Section
@@ -73,6 +74,11 @@ export default function Projects() {
                         <div className="absolute inset-0 bg-gradient-to-r from-[#6366F1]/0 via-[#6366F1]/10 to-[#6366F1]/0 animate-pulse"></div>
                       </div>
 
+                      {/* Glassmorphic static click indicator for Mobile & Desktop */}
+                      <div className="absolute top-6 right-6 w-12 h-12 rounded-full border border-[#6366F1]/30 bg-black/60 backdrop-blur-md flex items-center justify-center text-[#6366F1] group-hover:text-white group-hover:border-[#6366F1]/80 transition-all duration-300 shadow-lg z-10">
+                        <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform duration-300" />
+                      </div>
+
                       {/* Display large initial visual letter with glow */}
                       <div className="relative w-full h-full flex items-center justify-center select-none">
                         <div className="text-9xl font-black text-white/5 group-hover:text-white/20 group-hover:scale-110 group-hover:shadow-[0_0_100px_rgba(99,102,241,0.2)] transition-all duration-700 font-mono">
@@ -86,6 +92,15 @@ export default function Projects() {
             </AnimatedSection>
           ))}
         </div>
+
+        {/* Nút xem tất cả dự án (Lava Lamp) */}
+        <AnimatedSection direction="up" delay={0.4}>
+          <div className="mt-20 flex justify-center">
+            <Link href="/projects" className="btn-main">
+              <span>VIEW ALL PROJECTS</span>
+            </Link>
+          </div>
+        </AnimatedSection>
       </div>
     </section>
   );

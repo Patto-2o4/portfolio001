@@ -10,10 +10,13 @@ import DiscordPopup from "./components/DiscordPopup";
 import CustomCursor from "./components/CustomCursor";
 
 
+import AllProjects from "./pages/AllProjects";
+
 function Router() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
+      <Route path={"/projects"} component={AllProjects} />
       <Route path={"/projects/:id"} component={ProjectDetail} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
