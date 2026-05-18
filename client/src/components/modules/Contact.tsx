@@ -221,13 +221,13 @@ export default function Contact() {
                   ></textarea>
                 </div>
 
-                <Button
+                <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="btn-primary w-full"
+                  className="btn-main w-full"
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}
-                </Button>
+                </button>
               </form>
 
               <p className="text-xs text-gray-500 text-center mt-4">

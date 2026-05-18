@@ -89,7 +89,7 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <a href="#contact" className="btn-main hidden md:block group">
+            <a href="#contact" className="btn-main hidden md:inline-flex group">
               <Sparkles className="w-4 h-4 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-125" />
               Get In Touch
             </a>
