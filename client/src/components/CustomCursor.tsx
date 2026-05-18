@@ -80,21 +80,12 @@ export default function CustomCursor() {
         let targetHeight = 36;
         let targetRadius = 9999;
 
-        if (stickyTargetRef.current && hoverType === "interactive") {
-          // STICKY MAGNETIC MAGNETIC ALIGNMENT
-          const rect = stickyTargetRef.current.getBoundingClientRect();
-          
-          // Lock ring to the exact center of the interactive element
-          targetX = rect.left + rect.width / 2;
-          targetY = rect.top + rect.height / 2;
-
-          // Expand ring boundaries to cleanly encapsulate the element with padding
-          targetWidth = rect.width + 12;
-          targetHeight = rect.height + 12;
-          
-          // Extract the element's actual border-radius to shape-match elastically
-          const computedStyle = window.getComputedStyle(stickyTargetRef.current);
-          targetRadius = parseInt(computedStyle.borderRadius, 10) || 12;
+        if (hoverType === "interactive") {
+          // HIỆU ỨNG MƯỢT MÀ: Giữ nguyên hình tròn hoàn hảo (không biến thành chữ nhật)
+          // chỉ nở nhẹ ra và bám theo chuột để tạo cảm giác focus sang trọng.
+          targetWidth = 56;
+          targetHeight = 56;
+          targetRadius = 9999;
         } else if (hoverType === "card") {
           // Expand into a larger visual lens showing a VIEW tag on project cards
           targetWidth = 76;
@@ -144,7 +135,6 @@ export default function CustomCursor() {
         ref={dotElRef}
         className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-[#E9D5FF] shadow-[0_0_10px_#9917FF,0_0_3px_#FFF] pointer-events-none z-[99999] transition-opacity duration-300"
         style={{
-          transform: "translate(-50%, -50%)",
           opacity: hoverType === "text" ? 0 : 1,
         }}
       />
