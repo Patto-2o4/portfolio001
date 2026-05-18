@@ -3,26 +3,72 @@
 @import "tw-animate-css";
 
 /* =============================================================================
-   BTN-MAIN IDLE ANIMATIONS
+   BTN-MAIN LAVA LAMP ANIMATIONS
    =============================================================================
-   Có 2 hiệu ứng chạy vòng lặp vô tận:
-   1. btn-shimmer : Tia sáng trắng chạy quét từ trái sang phải (shimmer sweep)
-   2. btn-pulse-glow : Quầng sáng tím thở phồng xẹp nhịp nhàng (breathing glow)
-   
+   Hiệu ứng đèn dung nham (Lava Lamp) gồm 3 lớp:
+   1. btn-lava-blob-1 : Blob lớn màu tím/violet morphing hình dạng hữu cơ
+   2. btn-lava-blob-2 : Blob nhỏ màu indigo xanh offset, di chuyển ngược pha
+   3. btn-lava-glow   : Outer ambient glow thở nhịp nhàng bên ngoài nút
+
    === CÁCH CHỈNH SỬA ===
-   - Thay đổi tốc độ shimmer: 'animation: btn-shimmer 2.5s linear infinite' → đổi 2.5s
-   - Thay đổi tốc độ glow:    'animation: btn-pulse-glow 2s ease-in-out infinite' → đổi 2s
-   - Tắt shimmer: Xóa dòng 'animation: btn-shimmer ...' trong ::after
-   - Tắt glow:    Xóa dòng 'animation: btn-pulse-glow ...' trong btn-main
+   - Thay đổi tốc độ blob 1: 'animation: btn-lava-blob-1 5s ...' → đổi 5s (chậm hơn = mượt hơn)
+   - Thay đổi tốc độ blob 2: 'animation: btn-lava-blob-2 3.5s ...' → đổi 3.5s
+   - Tốc độ glow ngoài:      'animation: btn-lava-glow 2.5s ...'
+   - Màu blob 1 (::before):  Đổi #9917FF / #7C3AED → màu khác
+   - Màu blob 2 (::after):   Đổi #A78BFA / #4F46E5 → màu khác
+   - Cường độ blur:          Đổi blur(20px) → blur(10px) để nét hơn, blur(30px) để mờ hơn
 */
-@keyframes btn-shimmer {
-  0%   { transform: translateX(-100%) skewX(-15deg); }
-  100% { transform: translateX(300%) skewX(-15deg); }
+
+/* Blob 1 - morphing hữu cơ lớn (dịch chuyển + biến dạng border-radius) */
+@keyframes btn-lava-blob-1 {
+  0%, 100% {
+    transform: translate(-20%, -50%) scale(1.1);
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  25% {
+    transform: translate(10%, -30%) scale(1.0);
+    border-radius: 30% 70% 70% 30% / 30% 40% 60% 70%;
+  }
+  50% {
+    transform: translate(20%, -55%) scale(1.2);
+    border-radius: 50% 50% 20% 80% / 50% 70% 30% 50%;
+  }
+  75% {
+    transform: translate(-10%, -35%) scale(0.95);
+    border-radius: 70% 30% 50% 50% / 40% 60% 40% 60%;
+  }
 }
 
-@keyframes btn-pulse-glow {
-  0%, 100% { box-shadow: 0 4px 20px rgba(153, 23, 255, 0.3), 0 0 0 1px rgba(153, 23, 255, 0.1); }
-  50%       { box-shadow: 0 4px 35px rgba(153, 23, 255, 0.6), 0 0 20px rgba(153, 23, 255, 0.25), 0 0 0 1px rgba(153, 23, 255, 0.2); }
+/* Blob 2 - blob nhỏ hơn di chuyển ngược pha tạo cảm giác sôi sục */
+@keyframes btn-lava-blob-2 {
+  0%, 100% {
+    transform: translate(35%, -20%) scale(0.9);
+    border-radius: 40% 60% 50% 50% / 40% 50% 50% 60%;
+  }
+  33% {
+    transform: translate(-20%, -40%) scale(1.1);
+    border-radius: 70% 30% 30% 70% / 60% 40% 60% 40%;
+  }
+  66% {
+    transform: translate(10%, -10%) scale(0.85);
+    border-radius: 30% 60% 70% 40% / 50% 60% 40% 50%;
+  }
+}
+
+/* Outer ambient glow thở theo nhịp lava */
+@keyframes btn-lava-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 20px 4px rgba(120, 0, 255, 0.35),
+      0 0 50px 8px rgba(120, 0, 255, 0.12),
+      0 0 0 1px rgba(153, 23, 255, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 35px 10px rgba(120, 0, 255, 0.55),
+      0 0 80px 20px rgba(120, 0, 255, 0.18),
+      0 0 0 1px rgba(200, 80, 255, 0.45);
+  }
 }
 
 @utility btn-main {
@@ -34,80 +80,99 @@
   font-weight: 700;
   font-size: 0.95rem;
   color: #FFFFFF;
-  background: linear-gradient(135deg, #7C3AED 0%, #9917FF 100%);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 9999px; /* Hình dạng pill (thuốc) hoàn hảo */
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease;
+
+  /* === NỀN DARK PILL (như trong ảnh tham khảo) ===
+     Nền tối gần đen để blob lava nổi bật                */
+  background: #08000f;
+  border: 1.5px solid rgba(153, 23, 255, 0.45);
+  border-radius: 9999px;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   position: relative;
-  overflow: hidden; /* Cần để cắt hiệu ứng shimmer đúng vị trí */
+  overflow: hidden; /* BẮT BUỘC: cắt blob không tràn ra ngoài viền pill */
 
-  /* --- IDLE ANIMATION 1: Quầng sáng tím thở nhịp nhàng (Breathing Glow) ---
-     animation: [tên keyframe] [thời gian] [timing] [lặp]
-     - 2s = chu kỳ thở 2 giây → đổi thành 3s để thở chậm hơn, 1s để nhanh hơn
-     - ease-in-out = vào ra mượt, tự nhiên
-     - infinite = lặp vô tận                                                      */
-  animation: btn-pulse-glow 2s ease-in-out infinite;
+  /* === OUTER AMBIENT GLOW ===
+     Quầng sáng tím thở bên ngoài nút, tốc độ 2.5s      */
+  animation: btn-lava-glow 2.5s ease-in-out infinite;
 
-  /* --- IDLE ANIMATION 2: Tia sáng chạy quét (Shimmer Sweep) ---
-     Dùng ::after pseudo-element để tạo tia sáng trắng chạy qua nút              */
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 40%;       /* Độ rộng của tia sáng: 40% → tăng để tia to hơn         */
-    height: 100%;
-    background: linear-gradient(
-      to right,
-      transparent 0%,
-      rgba(255, 255, 255, 0.18) 50%,  /* 0.18 = độ sáng tia → tăng để sáng hơn */
-      transparent 100%
-    );
-    /* 2.5s = tia quét hết 1 vòng trong 2.5 giây → đổi để thay đổi tốc độ       */
-    animation: btn-shimmer 2.5s linear infinite;
-    pointer-events: none;
-    border-radius: 9999px;
-  }
-
-  /* Inner glassmorphism highlight at the top edge of the button */
+  /* === BLOB 1 (::before) - Blob lớn chính ===
+     Màu tím-violet sáng, chiếm ~80% chiều rộng nút
+     Morphing hình dạng hữu cơ + di chuyển lên xuống     */
   &::before {
     content: '';
     position: absolute;
-    inset: 1px;
-    border-radius: 9999px;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 50%);
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 220%;          /* Cao hơn nút để blob tràn đầy khi morphing */
+    background: radial-gradient(
+      ellipse at center,
+      rgba(167, 139, 250, 0.95) 0%,   /* Lavender sáng ở tâm */
+      rgba(153, 23, 255, 0.85) 35%,   /* Tím neon giữa */
+      rgba(109, 40, 217, 0.6) 65%,    /* Indigo đậm hơn */
+      transparent 80%
+    );
+    filter: blur(18px);    /* Blur cao = blob mờ ảo, giảm để nét hơn */
+    animation: btn-lava-blob-1 5s ease-in-out infinite;
     pointer-events: none;
-    transition: opacity 0.3s ease;
     z-index: 1;
   }
 
-  /* Đảm bảo nội dung (text, icon) nằm trên tia sáng */
-  & > * {
-    position: relative;
-    z-index: 2;
+  /* === BLOB 2 (::after) - Blob phụ offset ===
+     Màu indigo/blue-violet, nhỏ hơn, di chuyển ngược pha
+     Tạo cảm giác 2 "giọt" lava sôi sục bên trong        */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 55%;
+    height: 170%;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(196, 181, 253, 0.9) 0%,    /* Lavender nhạt ở tâm */
+      rgba(99, 102, 241, 0.75) 40%,   /* Indigo giữa */
+      rgba(79, 70, 229, 0.4) 70%,     /* Deep indigo */
+      transparent 85%
+    );
+    filter: blur(14px);    /* Blur nhẹ hơn blob 1 để tạo độ sâu */
+    animation: btn-lava-blob-2 3.5s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
   }
 
+  /* === NỘI DUNG (text, icon) ===
+     z-index cao hơn blob để text luôn rõ ràng phía trên  */
+  & > * {
+    position: relative;
+    z-index: 3;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+  }
+
+  /* === HOVER STATE ===
+     Khi hover: nút sáng lên mạnh hơn, blob chạy nhanh hơn qua filter brightness */
   &:hover {
-    background: linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%);
     transform: translateY(-3px) scale(1.04);
-    /* MAGICAL GLOW specs from Figma: X=0, Y=0, Blur=180px, Color=#9917FF */
-    animation: none; /* Tắt idle glow khi hover để glow hover chiếm quyền */
-    box-shadow: 0 0 180px 0 #9917FF,
-                0 0 40px 0 rgba(153, 23, 255, 0.7),
-                0 8px 25px 0 rgba(153, 23, 255, 0.5);
+    border-color: rgba(200, 100, 255, 0.7);
+    animation: none;
+    box-shadow:
+      0 0 180px 0 #9917FF,
+      0 0 50px 10px rgba(153, 23, 255, 0.6),
+      0 8px 25px 0 rgba(153, 23, 255, 0.4),
+      0 0 0 1px rgba(200, 100, 255, 0.5);
+    filter: brightness(1.15);
   }
 
   &:active {
     transform: translateY(-1px) scale(0.99);
-    box-shadow: 0 0 90px 0 rgba(153, 23, 255, 0.8),
-                0 4px 15px 0 rgba(153, 23, 255, 0.4);
+    filter: brightness(1.05);
   }
 
   &:disabled {
     opacity: 0.6;
     pointer-events: none;
     animation: none;
+    filter: none;
   }
 }
 
