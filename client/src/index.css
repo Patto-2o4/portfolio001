@@ -6,25 +6,44 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 2rem;
-  font-weight: 600;
+  gap: 0.65rem;
+  padding: 0.85rem 2.5rem;
+  font-weight: 700;
   font-size: 0.95rem;
   color: #FFFFFF;
-  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
-  border: none;
-  border-radius: 0.5rem;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+  background: linear-gradient(135deg, #7C3AED 0%, #9917FF 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 9999px; /* Pill shape exactly like the image */
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(153, 23, 255, 0.3), 0 0 0 1px rgba(153, 23, 255, 0.1);
   cursor: pointer;
+  position: relative;
+  overflow: visible; /* Prevent clipping of the huge 180px glow! */
+  
+  /* Inner glassmorphism highlight at the top edge of the button */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    border-radius: 9999px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 50%);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
 
   &:hover {
-    background: linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%);
-    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
-    transform: translateY(-2px);
+    background: linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%);
+    transform: translateY(-3px) scale(1.04);
+    /* MAGICAL GLOW specs from Figma: X=0, Y=0, Blur=180px, Color=#9917FF (100% opacity) */
+    box-shadow: 0 0 180px 0 #9917FF, 
+                0 0 40px 0 rgba(153, 23, 255, 0.7),
+                0 8px 25px 0 rgba(153, 23, 255, 0.5);
   }
 
   &:active {
-    transform: translateY(0) scale(0.98);
+    transform: translateY(-1px) scale(0.99);
+    box-shadow: 0 0 90px 0 rgba(153, 23, 255, 0.8),
+                0 4px 15px 0 rgba(153, 23, 255, 0.4);
   }
 
   &:disabled {
@@ -37,25 +56,27 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 2rem;
-  font-weight: 600;
+  gap: 0.65rem;
+  padding: 0.85rem 2.5rem;
+  font-weight: 700;
   font-size: 0.95rem;
-  color: #6366F1;
+  color: #9917FF;
   background: transparent;
-  border: 2px solid #6366F1;
-  border-radius: 0.5rem;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 2px solid #9917FF;
+  border-radius: 9999px; /* Pill shape for consistent design system */
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
 
   &:hover {
     color: #FFFFFF;
-    background: #6366F1;
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
-    transform: translateY(-2px);
+    background: #9917FF;
+    box-shadow: 0 0 80px 0 rgba(153, 23, 255, 0.4),
+                0 4px 15px 0 rgba(153, 23, 255, 0.3);
+    transform: translateY(-3px) scale(1.04);
   }
 
   &:active {
-    transform: translateY(0) scale(0.98);
+    transform: translateY(-1px) scale(0.99);
   }
 }
 

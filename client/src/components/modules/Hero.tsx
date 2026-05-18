@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import AnimatedSection from "@/components/AnimatedSection";
 import SplineInteractive from "@/components/SplineInteractive";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { Sparkles, MessageSquare, Briefcase } from "lucide-react";
 
 /**
  * MODULE: Hero Section
@@ -89,9 +89,10 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Button className="btn-primary hidden md:block">
+            <a href="#contact" className="btn-main hidden md:block group">
+              <Sparkles className="w-4 h-4 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-125" />
               Get In Touch
-            </Button>
+            </a>
           </motion.div>
         </div>
       </nav>
@@ -138,15 +139,13 @@ export default function Hero() {
             className="flex gap-6 flex-wrap"
             variants={itemVariants}
           >
-            <a href="mailto:Patto2k4@gmail.com">
-              <Button className="btn-primary">
-                CONTACT ME
-              </Button>
+            <a href="mailto:Patto2k4@gmail.com" className="btn-main group">
+              <MessageSquare className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-110" />
+              CONTACT ME
             </a>
-            <a href="#projects">
-              <Button className="btn-secondary">
-                VIEW MY WORK
-              </Button>
+            <a href="#projects" className="btn-sec group">
+              <Briefcase className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" />
+              VIEW MY WORK
             </a>
           </motion.div>
 
