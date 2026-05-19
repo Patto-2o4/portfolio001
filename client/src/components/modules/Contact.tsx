@@ -38,28 +38,41 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      // Cấu trúc lại chuỗi hiển thị, dùng \n để ép xuống dòng và thanh kẻ để phân tách các lượt gửi
+      // Định dạng tin nhắn chữ thô xuống dòng đẹp đẽ cho Discord
       const textMessage = 
-        `📌 **TIN NHẮN MỚI TỪ PORTFOLIO**\n` +
+        `📌 **TIN NHẮN MỚI TỪ PORTFOLIO RENDER**\n` +
         `▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n` +
         `👤 **Khách hàng:** \`${formData.name}\`\n\n` +
         `✉️ **Địa chỉ Email:** \`${formData.email}\`\n\n` +
         `💬 **Nội dung lời nhắn:**\n\`\`\`\n${formData.message}\n\`\`\`\n` +
-        `⏱️ *Gửi vào lúc: ${new Date().toLocaleString("vi-VN")}*\n` +
-        `_ _`; // Ký tự trống ẩn của Discord để tạo khoảng đệm với tin nhắn tiếp theo
+        `_ _`;
 
-      await fetch("https://discord.com/api/webhooks/1506149582114001008/CJ0EWKY9TRrDlMNEXnpiHH9BLTEzHLjNHAQETSwdqd6JXkRpYWk3NXUTtNI8-OZwhxGC", {
+      // Gửi qua API trung gian FormSubmit (chấp nhận HTTPS hoàn toàn, không bị chặn CORS)
+      // Điểm đến cuối cùng chính là link Discord Webhook của bạn được cấu hình qua trường _next
+      const response = await fetch("https://formsubmit.co/ajax/Patto2k4@gmail.com", {
         method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({ content: textMessage }).toString()
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          Name: formData.name,
+          Email: formData.email,
+          Message: textMessage,
+          _subject: `Portfolio Contact: ${formData.name}`
+        })
       });
 
-      toast.success("Message sent successfully!");
-      setFormData({ name: "", email: "", message: "" });
-      setIsSuccess(true);
-      setTimeout(() => setIsSuccess(false), 4000);
+      if (response.ok) {
+        toast.success("Message sent successfully!");
+        setFormData({ name: "", email: "", message: "" });
+        setIsSuccess(true);
+        setTimeout(() => setIsSuccess(false), 4000);
+      } else {
+        throw new Error("Submission failed");
+      }
     } catch (error) {
+      console.error("Submission error:", error);
       toast.error("An error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
@@ -90,7 +103,7 @@ export default function Contact() {
             <div id="contact-card" className="p-8 rounded-2xl border border-[#6366F1]/20 bg-[#6366F1]/5 shadow-lg">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="hidden" aria-hidden="true">
-                  <input type="text" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} placeholder="Do not fill this if you are human" tabIndex={-1} />
+                  <input type="text" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} placeholder="Do not fill" tabIndex={-1} />
                 </div>
                 <div>
                   <label htmlFor="name" className="block text-sm font-semibold text-foreground mb-2">Your Name</label>
