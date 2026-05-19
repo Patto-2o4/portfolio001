@@ -1,7 +1,8 @@
 import AnimatedSection from "@/components/AnimatedSection";
 import { useLanguage } from "@/contexts/LanguageContext";
 import CtaButton from "@/components/ui/CtaButton";
-import { Lightbulb, Layers, BrainCircuit, Box, Workflow } from "lucide-react";
+import { Lightbulb, Layers, BrainCircuit, Box, Workflow, Download } from "lucide-react";
+import Avatar from "@/assets/images/Avatar.png"; // Import avatar
 
 export default function About() {
   const { t } = useLanguage();
@@ -44,7 +45,7 @@ export default function About() {
 
                 <div className="relative z-0 w-full h-full">
                   <img
-                    src="./img/image.png"
+                    src={Avatar} // Sử dụng avatar đã import
                     alt="Patto Profile"
                     className="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700"
                   />
@@ -88,9 +89,20 @@ export default function About() {
                 </div>
               </div>
 
-              <CtaButton href="#contact" variant="main">
-                Let's Work Together
-              </CtaButton>
+              <div className="flex items-center gap-4">
+                <CtaButton href="#contact" isPrimary>
+                  Let's Work Together
+                </CtaButton>
+                {/* Nút Download CV */}
+                <a 
+                  href="/Patto_CV.pdf" // Đường dẫn tới file CV trong public
+                  download
+                  className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700"
+                >
+                  <Download className="w-5 h-5 mr-2" />
+                  Download CV
+                </a>
+              </div>
             </div>
           </AnimatedSection>
         </div>

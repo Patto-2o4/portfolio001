@@ -1,26 +1,25 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Palette, Users, Sparkles, MessageSquare } from "lucide-react";
+import { X, Palette, Users, Sparkles } from "lucide-react";
+import Particles from "@/components/ui/Particles";
+import DiscordBanner from "@/assets/images/DiscordBanner.png";
 
-/**
- * COMPONENT: DiscordPopup
- * =======================
- * Mục đích: Hiển thị popup giới thiệu Discord server của Patto với quầng sáng neon và phong cách 3D kính mờ
- */
-
-const DISCORD_URL = "https://discord.gg/XCfkTu7ma6"; // Discord server invite của Patto
+const DISCORD_URL = "https://discord.gg/XCfkTu7ma6";
 
 export default function DiscordPopup() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
+  // Effect to handle body scroll lock
   useEffect(() => {
-    // Hiển thị popup 1.5 giây sau khi trang tải xong
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-    }, 1500);
-
-    return () => clearTimeout(timer);
-  }, []);
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]);
 
   const handleClose = () => {
     setIsOpen(false);
@@ -30,68 +29,60 @@ export default function DiscordPopup() {
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
-          {/* Backdrop */}
+          {/* Backdrop & Particles */}
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 0.3 } }}
+            exit={{ opacity: 0, transition: { duration: 0.3, delay: 0.2 } }}
             onClick={handleClose}
-            className="absolute inset-0 bg-black/85 backdrop-blur-md"
-          />
+            className="absolute inset-0 bg-black/80 backdrop-blur-xl"
+          >
+            <Particles />
+          </motion.div>
 
           {/* Modal */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="relative z-10 w-full max-w-md rounded-2xl overflow-hidden border border-[#A78BFA]/20 shadow-2xl"
+            animate={{ opacity: 1, scale: 1, y: 0, transition: { type: "spring", damping: 20, stiffness: 200, delay: 0.1 } }}
+            exit={{ opacity: 0, scale: 0.9, y: 20, transition: { duration: 0.2 } }}
+            className="relative z-10 w-full max-w-md rounded-xl overflow-hidden border border-primary/20 bg-card/80 shadow-2xl shadow-primary/25"
           >
+             {/* Close button */}
+             <button
+              onClick={handleClose}
+              className="absolute top-3 right-3 z-20 p-1.5 rounded-full bg-black/30 hover:bg-black/50 transition-all duration-300"
+            >
+              <X className="w-4 h-4 text-white/80" />
+            </button>
+
             {/* Banner */}
-            <div className="relative h-44 bg-gradient-to-br from-[#7C3AED] via-[#8B5CF6] to-[#A78BFA] overflow-hidden flex flex-col items-center justify-center text-center px-6">
-              {/* Animated background elements */}
-              <div className="absolute inset-0 opacity-15">
-                <div className="absolute -top-12 -right-12 w-64 h-64 bg-white rounded-full blur-3xl"></div>
-              </div>
-
-              {/* Close button */}
-              <button
-                onClick={handleClose}
-                className="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/40 hover:bg-black/60 transition-all duration-300 border border-white/10"
-              >
-                <X className="w-4 h-4 text-white" />
-              </button>
-
-              {/* Banner content */}
-              <MessageSquare className="w-12 h-12 text-white mb-3 animate-bounce" />
-              <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight">
-                JOIN MY CREATIVE SPACE
-              </h2>
-              <p className="text-white/80 text-sm mt-1">Connect directly and collaborate on 3D projects</p>
+            <div className="aspect-w-16 aspect-h-9">
+                <img src={DiscordBanner} alt="Discord Banner" className="w-full h-full object-cover" />
             </div>
 
             {/* Content */}
-            <div className="bg-[#111111] p-8">
-              <p className="text-gray-300 text-sm md:text-base mb-6 leading-relaxed text-center">
-                Step into my Discord creative server! Share your works, get direct design reviews and feedback from me, and hang out with other talented designers and developers.
-              </p>
+            <div className="p-6 text-center">
+                <h2 className="text-2xl font-bold text-foreground tracking-tight">
+                    Join My Creative Server
+                </h2>
+                <p className="text-muted-foreground text-sm mt-1 mb-4">Get direct feedback & collaborate on projects.</p>
 
-              <div className="grid grid-cols-3 gap-3 mb-8">
-                <div className="text-center p-4 rounded-xl bg-[#1A1A1A] border border-[#A78BFA]/10 hover:border-[#A78BFA]/30 transition-all duration-300">
-                  <Palette className="w-6 h-6 text-[#A78BFA] mx-auto mb-2" />
-                  <p className="text-xs font-semibold text-white">3D Art</p>
+              <div className="grid grid-cols-3 gap-3 my-6">
+                <div className="text-center py-2 px-1 rounded-lg bg-white/5 border border-white/10">
+                  <Palette className="w-5 h-5 text-primary mx-auto mb-1" />
+                  <p className="text-xs font-medium text-foreground">3D Art</p>
                 </div>
-                <div className="text-center p-4 rounded-xl bg-[#1A1A1A] border border-[#A78BFA]/10 hover:border-[#A78BFA]/30 transition-all duration-300">
-                  <Users className="w-6 h-6 text-[#A78BFA] mx-auto mb-2" />
-                  <p className="text-xs font-semibold text-white">Hangout</p>
+                <div className="text-center py-2 px-1 rounded-lg bg-white/5 border border-white/10">
+                  <Users className="w-5 h-5 text-primary mx-auto mb-1" />
+                  <p className="text-xs font-medium text-foreground">Community</p>
                 </div>
-                <div className="text-center p-4 rounded-xl bg-[#1A1A1A] border border-[#A78BFA]/10 hover:border-[#A78BFA]/30 transition-all duration-300">
-                  <Sparkles className="w-6 h-6 text-[#A78BFA] mx-auto mb-2" />
-                  <p className="text-xs font-semibold text-white">Feedback</p>
+                <div className="text-center py-2 px-1 rounded-lg bg-white/5 border border-white/10">
+                  <Sparkles className="w-5 h-5 text-primary mx-auto mb-1" />
+                  <p className="text-xs font-medium text-foreground">Feedback</p>
                 </div>
               </div>
 
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <a
                   href={DISCORD_URL}
                   target="_blank"
@@ -107,10 +98,6 @@ export default function DiscordPopup() {
                   Maybe Later
                 </button>
               </div>
-
-              <p className="text-[10px] text-gray-600 text-center mt-4 uppercase tracking-widest">
-                This invitation popup appears once per session
-              </p>
             </div>
           </motion.div>
         </div>

@@ -3,6 +3,8 @@ import { Link, useParams, useLocation } from "wouter";
 import { projects } from "@/data/projects";
 import * as Icons from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import CtaButton from "@/components/ui/CtaButton";
+import Projects from "@/components/modules/Projects";
 
 export default function ProjectDetail() {
   const { id } = useParams<{ id: string }>();
@@ -45,16 +47,18 @@ export default function ProjectDetail() {
   const nextProjectId = project.id === projects.length ? 1 : project.id + 1;
   const nextProject = projects.find((p) => p.id === nextProjectId);
 
+  const suggestedProjects = projects.filter(p => p.id !== project.id).slice(0, 3);
+
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-[#6366F1]/30 relative overflow-hidden">
       {/* Background ambient lighting effects with parallax motion */}
-      <motion.div 
+      <motion.div
         style={{ y: glow1Y }}
-        className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#6366F1]/10 rounded-full blur-[180px] -z-10 pointer-events-none" 
+        className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#6366F1]/10 rounded-full blur-[180px] -z-10 pointer-events-none"
       />
-      <motion.div 
+      <motion.div
         style={{ y: glow2Y }}
-        className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-[#9917FF]/5 rounded-full blur-[200px] -z-10 pointer-events-none" 
+        className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-[#9917FF]/5 rounded-full blur-[200px] -z-10 pointer-events-none"
       />
       <div className="absolute bottom-10 left-1/3 w-[450px] h-[450px] bg-[#6366F1]/5 rounded-full blur-[150px] -z-10 pointer-events-none" />
 
@@ -78,14 +82,14 @@ export default function ProjectDetail() {
         {/* Hero Section */}
         <header className="relative mb-16 select-none">
           {/* Huge Decorative Project Number with Parallax scrolling */}
-          <motion.div 
+          <motion.div
             style={{ y: numberY }}
             className="absolute -right-6 -top-12 text-[10rem] md:text-[18rem] font-black text-foreground/[0.03] leading-none pointer-events-none font-mono"
           >
             {project.number}
           </motion.div>
 
-          <motion.div 
+          <motion.div
             style={{ y: heroTextY, opacity: heroTextOpacity }}
             className="relative z-10"
           >
@@ -102,7 +106,7 @@ export default function ProjectDetail() {
           {/* Glassmorphic Metadata Grid */}
           <div className="relative grid grid-cols-2 md:grid-cols-4 gap-6 p-6 md:p-8 rounded-3xl bg-card/40 border border-border backdrop-blur-md shadow-2xl overflow-hidden mt-10">
             <div className="absolute inset-0 bg-gradient-to-r from-[#6366F1]/5 to-[#9917FF]/5 pointer-events-none" />
-            
+
             <div>
               <p className="text-xs text-muted-foreground font-bold uppercase tracking-wider mb-2">Client</p>
               <p className="text-base font-semibold text-foreground/90">{project.client}</p>
@@ -144,7 +148,7 @@ export default function ProjectDetail() {
         {/* Challenge and Solution Side-by-Side with Scroll Entrance Animations */}
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           {/* Challenge Box */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -164,7 +168,7 @@ export default function ProjectDetail() {
           </motion.div>
 
           {/* Solution Box */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -188,7 +192,7 @@ export default function ProjectDetail() {
         <section className="p-8 md:p-12 rounded-3xl bg-gradient-to-br from-card via-card to-background border border-border shadow-2xl text-center relative overflow-hidden mb-20 group">
           <div className="absolute inset-0 bg-[#6366F1]/5 blur-3xl -z-10 group-hover:bg-[#6366F1]/10 transition-colors duration-500" />
           <div className="absolute -top-12 -left-12 w-48 h-48 bg-[#9917FF]/10 rounded-full blur-3xl pointer-events-none" />
-          
+
           <span className="inline-block text-xs font-bold text-[#6366F1] uppercase tracking-widest mb-4">
             Key Outcomes & Impact
           </span>
@@ -208,7 +212,7 @@ export default function ProjectDetail() {
             </p>
           </div>
 
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-50px" }}
@@ -239,7 +243,7 @@ export default function ProjectDetail() {
                   <span className="text-xs text-muted-foreground font-mono font-bold mb-3 tracking-widest uppercase block">
                     {step.stage}
                   </span>
-                  
+
                   <div className="p-3 rounded-xl bg-[#6366F1]/5 text-primary w-fit mb-5 group-hover:bg-[#6366F1]/15 transition-colors border border-[#6366F1]/10">
                     <DynamicIcon className="w-5 h-5" />
                   </div>
@@ -279,24 +283,26 @@ export default function ProjectDetail() {
           </div>
         </section>
 
+        {/* Suggested Projects */}
+        <section className="mb-20">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-extrabold text-foreground tracking-tight mb-3">
+              Other Projects
+            </h3>
+          </div>
+          <Projects projects={suggestedProjects} />
+        </section>
+
         {/* Dynamic Project Footer Navigation */}
         <footer className="flex flex-col sm:flex-row justify-between items-center gap-6 pt-12 border-t border-white/5">
-          <Link
-            href="/#contact"
-            className="btn-sec w-full sm:w-auto"
-          >
-            <Icons.Mail className="w-4 h-4 mr-2" />
-            Discuss a Similar Project
-          </Link>
+            <CtaButton href="/#contact" icon={Icons.Mail}>
+                Discuss a Similar Project
+            </CtaButton>
 
           {nextProject && (
-            <Link
-              href={`/projects/${nextProject.id}`}
-              className="btn-primary w-full sm:w-auto flex items-center justify-center gap-2 group"
-            >
-              <span>Next Case Study: {nextProject.title}</span>
-              <Icons.ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
-            </Link>
+            <CtaButton href={`/projects/${nextProject.id}`} icon={Icons.ArrowRight} isPrimary>
+                Next Case Study: {nextProject.title}
+            </CtaButton>
           )}
         </footer>
       </div>

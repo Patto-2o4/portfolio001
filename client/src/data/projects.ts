@@ -29,6 +29,7 @@ export interface Project {
   results: string;
   process: ProjectProcess[];
   technicalSpecs: ProjectTechnicalSpecs;
+  isFeatured?: boolean;
 }
 
 export const projects: Project[] = [
@@ -46,6 +47,7 @@ export const projects: Project[] = [
     challenge: "Rendering 1.2 million polygons of microscopic metallic gears, sapphire glass, and brushed gold textures in the web browser at 60 FPS while keeping the asset bundle size under 8MB to ensure instant page load.",
     solution: "Used Blender to decimate high-poly industrial CAD models to 82,000 polygons using custom low-poly retopology. Baked ambient occlusion and normal maps in Substance Painter, and implemented a custom WebGL refraction shader in Spline for the sapphire crystal dome.",
     results: "Triggered a 45% increase in online timepiece custom pre-orders, grew active user on-page dwell time by 180 seconds, and reduced physical showroom inquiry lifecycles by 25%.",
+    isFeatured: true,
     process: [
       {
         stage: "01 / CAD Prep",
@@ -93,6 +95,7 @@ export const projects: Project[] = [
     challenge: "Simulating complex photorealistic forest foliage, moving trees, wind-swept water reflections, and natural daylight changes across the day-night cycle without heavy rendering noise or visual stutters.",
     solution: "Utilized Unreal Engine 5's Lumen global illumination system for instant photorealistic lighting. Designed procedural grass and wind shader vectors, rendering high-impact 4K animation sequences at 60 FPS.",
     results: "Enabled the client to secure 100% of pre-sale apartment reservations within 14 days of the video launch, generating over 8.2 million impressions on international real estate channels.",
+    isFeatured: true,
     process: [
       {
         stage: "01 / Landscape",

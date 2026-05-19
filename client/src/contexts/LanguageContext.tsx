@@ -15,7 +15,11 @@ const dictionary = {
     aboutText2: "Whether it's a complex B2B SaaS platform or an engaging consumer mobile app, I approach every project with a user-first mindset, ensuring the final product is not just beautiful, but incredibly functional.",
     projectsHeading: "Featured Projects",
     viewAllProjects: "VIEW ALL PROJECTS",
-    allProjectsDesc: "A complete archive of all featured Product Design, UX/UI, and interactive digital experiences."
+    allProjectsDesc: "A complete archive of all featured Product Design, UX/UI, and interactive digital experiences.",
+    "Product Design": "Product Design",
+    "Architecture": "Architecture",
+    "Motion Graphics": "Motion Graphics",
+    "3D Animation": "3D Animation",
   },
   VI: {
     heroTitle: "CHÀO BẠN, TÔI LÀ",
@@ -28,7 +32,11 @@ const dictionary = {
     aboutText2: "Cho dù đó là một nền tảng B2B SaaS phức tạp hay ứng dụng di động cho người tiêu dùng, tôi luôn tiếp cận mọi dự án với tư duy đặt người dùng lên hàng đầu, đảm bảo sản phẩm cuối cùng không chỉ đẹp mắt mà còn hoạt động cực kỳ hiệu quả.",
     projectsHeading: "Dự Án Nổi Bật",
     viewAllProjects: "XEM TẤT CẢ DỰ ÁN",
-    allProjectsDesc: "Kho lưu trữ toàn bộ các dự án Thiết kế Sản phẩm, UX/UI và trải nghiệm số nổi bật."
+    allProjectsDesc: "Kho lưu trữ toàn bộ các dự án Thiết kế Sản phẩm, UX/UI và trải nghiệm số nổi bật.",
+    "Product Design": "Thiết kế sản phẩm",
+    "Architecture": "Kiến trúc",
+    "Motion Graphics": "Đồ họa chuyển động",
+    "3D Animation": "Hoạt hình 3D",
   },
   ZH: {
     heroTitle: "你好，我是",
@@ -41,7 +49,11 @@ const dictionary = {
     aboutText2: "无论是一个复杂的B2B SaaS平台还是吸引人的消费级移动应用，我都以用户至上的心态来处理每一个项目，确保最终产品不仅美观，而且功能极强。",
     projectsHeading: "精选项目",
     viewAllProjects: "查看所有项目",
-    allProjectsDesc: "所有精选的产品设计、UX/UI和互动数字体验的完整档案。"
+    allProjectsDesc: "所有精选的产品设计、UX/UI和互动数字体验的完整档案。",
+    "Product Design": "产品设计",
+    "Architecture": "建筑学",
+    "Motion Graphics": "动态图形",
+    "3D Animation": "3D动画",
   }
 };
 

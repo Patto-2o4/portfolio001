@@ -2,42 +2,20 @@ import { motion } from "framer-motion";
 import { Sparkles, Sun, Moon } from "lucide-react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { Link, useLocation } from "wouter";
-import { useEffect, useState } from "react";
+import { useTheme } from "@/contexts/ThemeContext"; // Import useTheme
 
 export default function Header() {
   const [location] = useLocation();
   const isHome = location === "/";
-  const [isDark, setIsDark] = useState(true);
-
-  // Khởi tạo theme với localStorage, mặc định Dark Mode
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    
-    if (savedTheme === "light") {
-      document.documentElement.classList.remove("dark");
-      setIsDark(false);
-    } else {
-      // Mặc định là Dark Mode
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-      setIsDark(true);
-    }
-  }, []);
+  const { theme, setTheme } = useTheme(); // Sử dụng hook mới
+  const isDark = theme === 'dark';
 
   const toggleTheme = () => {
-    if (isDark) {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-      setIsDark(false);
-    } else {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-      setIsDark(true);
-    }
+    setTheme(isDark ? 'light' : 'dark');
   };
 
   const handleContactClick = (e: React.MouseEvent) => {
-    if (!isHome) return; // Nếu không ở Home thì để mặc định link tới /#contact
+    if (!isHome) return; 
     e.preventDefault();
     const card = document.getElementById("contact-card");
     if (card) {
@@ -91,21 +69,16 @@ export default function Header() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          {/* Theme Toggle Switch */}
-          <div 
+          {/* Theme Toggle Button - Tinh chỉnh lại */}
+          <button
             onClick={toggleTheme}
-            className={`w-[60px] h-8 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 border border-border shadow-inner ${isDark ? 'bg-card' : 'bg-gray-200'}`}
+            className="relative inline-flex items-center justify-center w-10 h-10 rounded-full bg-card hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background transition-all duration-300"
             title="Toggle theme"
           >
-            <motion.div 
-              layout
-              className={`w-6 h-6 rounded-full shadow flex items-center justify-center ${isDark ? 'bg-primary' : 'bg-white'}`}
-              animate={{ x: isDark ? 28 : 0 }}
-              transition={{ type: "spring", stiffness: 500, damping: 30 }}
-            >
-              {isDark ? <Moon className="w-3.5 h-3.5 text-white" /> : <Sun className="w-3.5 h-3.5 text-orange-500" />}
-            </motion.div>
-          </div>
+            <Sun className={`w-5 h-5 transition-transform duration-500 ${isDark ? 'transform rotate-90 scale-0' : 'transform rotate-0 scale-100'}`} />
+            <Moon className={`absolute w-5 h-5 transition-transform duration-500 ${isDark ? 'transform rotate-0 scale-100' : 'transform -rotate-90 scale-0'}`} />
+            <span className="sr-only">Toggle theme</span>
+          </button>
 
           <LanguageSwitcher />
 

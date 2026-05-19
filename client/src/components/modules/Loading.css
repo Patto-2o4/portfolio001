@@ -1,0 +1,19 @@
+.loading-screen {
+  @apply fixed inset-0 z-50 flex items-center justify-center;
+}
+
+.loading-screen.dark {
+  background-color: #1a1a1a;
+}
+
+.loading-screen.light {
+  background-color: #f5f5f5;
+}
+
+.loading-logo {
+  @apply text-4xl font-black tracking-wider;
+}
+
+.loading-logo-dot {
+  color: #6366F1;
+}
