@@ -19,7 +19,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
  */
 
 // URL mô hình 3D từ Spline - Thay đổi URL này bằng mô hình của bạn
-const SPLINE_URL = "https://prod.spline.design/wgI90cJyjVIqgKwS/scene.splinecode";
+const SPLINE_URL = "https://my.spline.design/littleworldkawaiipigcopy-ZtsgOfJeVytlTzg2KDby9zZZ/";
 
 export default function Hero() {
   const [splineTrigger, setSplineTrigger] = useState<string>("");

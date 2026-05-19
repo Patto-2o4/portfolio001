@@ -43,9 +43,9 @@ export default function About() {
                 </div>
 
                 <div className="relative z-0 w-full h-full">
-                  <img 
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop" 
-                    alt="Patto Profile" 
+                  <img
+                    src="./img/image.png"
+                    alt="Patto Profile"
                     className="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700"
                   />
                 </div>
