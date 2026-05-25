@@ -2,16 +2,24 @@ import { motion } from "framer-motion";
 import { Sparkles, Sun, Moon } from "lucide-react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { Link, useLocation } from "wouter";
-import { useTheme } from "@/contexts/ThemeContext"; // Import useTheme
+import { useTheme } from "@/contexts/ThemeContext";
+import { useEffect, useState } from "react";
 
 export default function Header() {
   const [location] = useLocation();
   const isHome = location === "/";
   const { theme, setTheme } = useTheme(); // Sử dụng hook mới
-  const isDark = theme === 'dark';
+  const [isDark, setIsDark] = useState(theme === 'dark');
+
+  useEffect(() => {
+    setIsDark(theme === 'dark');
+  }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(isDark ? 'light' : 'dark');
+    const newTheme = isDark ? "light" : "dark";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+    window.location.reload(); // Bắt buộc tải lại trang để hiển thị màn hình Loading chuẩn màu
   };
 
   const handleContactClick = (e: React.MouseEvent) => {

@@ -6,6 +6,15 @@
     <script>
       (function() {
         try {
+          // Xử lý chống chớp màn hình (FOUC) cho Dark/Light Mode
+          const theme = localStorage.getItem("theme");
+          if (theme === "light") {
+            document.documentElement.classList.remove("dark");
+          } else {
+            document.documentElement.classList.add("dark");
+          }
+          
+          // Xử lý ngôn ngữ
           const lang = localStorage.getItem("preferredLanguage") || "EN";
           document.documentElement.classList.add('lang-' + lang.toLowerCase());
         } catch (e) {
